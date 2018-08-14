@@ -1,0 +1,28 @@
+﻿@model VNPRECRUITMENT.Models.Job_Location
+
+@{
+    ViewBag.Title = "Xóa khu vực";
+}
+
+<div>
+    <div class="page-header">
+        <h1>@ViewBag.title</h1>
+    </div>
+    <dl class="dl-horizontal">
+        <dt>
+            Khu vực
+        </dt>
+        <dd>
+            <label name="groupname">@ViewBag.LocationName</label>
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @*@Html.AntiForgeryToken()*@
+
+        <div class="clearfix form-actions center">
+            <button type="submit" class="btn btn-primary btn-sm" onclick="alert('Đã xóa')">Xóa</button>
+            <a href="@Url.Action("Index", "Job_Location")" class="btn btn-dark-grey btn-sm">Hủy bỏ</a>
+        </div>
+    }
+</div>

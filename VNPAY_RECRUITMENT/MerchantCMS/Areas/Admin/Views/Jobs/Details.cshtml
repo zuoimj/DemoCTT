@@ -1,0 +1,99 @@
+﻿@model IEnumerable<VNPRECRUITMENT.Models.Job>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JOB_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALARY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATED_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXPIRED_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JOB_DECRIPTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JOB_REQUIREMENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JOB_OPPORTUNITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISDELETED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VIEW_COUNT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JOB_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group.GROUP_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOB_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SALARY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATED_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXPIRED_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOB_DECRIPTION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOB_REQUIREMENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOB_OPPORTUNITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISDELETED)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VIEW_COUNT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOB_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group.GROUP_NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.JOB_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.JOB_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.JOB_ID })
+        </td>
+    </tr>
+}
+
+</table>

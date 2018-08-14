@@ -1,0 +1,167 @@
+﻿@using MvcPaging
+@using PagedList.Mvc;
+@using VNPRECRUITMENT.Models;
+@{
+    ViewBag.Title = "Details";
+}
+@functions{
+    public string GenerateSlug(string Name)
+    {
+        string phrase = string.Format("{0}", Name);
+
+        string str = RemoveUnicode(phrase).ToLower();
+        // invalid chars
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"[^a-z0-9\s-]", "");
+        // convert multiple spaces into one space
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s+", " ").Trim();
+        // cut and trim
+        str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s", "-"); // hyphens
+        return str;
+    }
+
+    public static string RemoveUnicode(string text)
+    {
+        string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ",
+    "đ",
+    "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+    "í","ì","ỉ","ĩ","ị",
+    "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ",
+    "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự",
+    "ý","ỳ","ỷ","ỹ","ỵ",};
+        string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+    "d",
+    "e","e","e","e","e","e","e","e","e","e","e",
+    "i","i","i","i","i",
+    "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o",
+    "u","u","u","u","u","u","u","u","u","u","u",
+    "y","y","y","y","y",};
+        for (int i = 0; i < arr1.Length; i++)
+        {
+            text = text.Replace(arr1[i], arr2[i]);
+            text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+        }
+        return text;
+    }
+}
+
+
+@foreach (var item in ViewBag.Job)
+{
+    string name = GenerateSlug(item.JOB_NAME);
+    VNPAY_RECRUITMENTEntities Dbcontext = new VNPAY_RECRUITMENTEntities();
+    var location_name = Dbcontext.PROC_LOCATION_NAME_SELECTALL(item.JOB_ID);
+    List<string> rs = new List<string>();
+    foreach (var item_location in location_name)
+    {
+        rs.Add(item_location);
+    }
+    <div id="main">
+        <!--Table-->
+        <div class="container">
+            <div class="box-table">
+                <div class="box-table-title">
+                    <h3>@item.JOB_NAME</h3>
+                    <p>Lượt xem: @item.VIEW_COUNT</p>
+                </div>
+                <div class="box-table-cont">
+                    <div class="detail">
+                        <div class="top-detail clearfix">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <p><span>Khu vực ứng tuyển:</span> <strong>@string.Join(",", rs)</strong></p>
+                                    <p><span>Kết thúc:</span> <strong>@item.EXPIRED_DATE</strong></p>
+                                    <p><span>Số lượng cần tuyển:</span> <strong>@item.NUMBER người</strong></p>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <a class="btn btn-primary btn-apply" href="~/ung-tuyen/@name/@item.JOB_ID" style="margin-left:75px">Ứng tuyển</a>
+                                </div>
+                                @*<div class="col-sm-4">
+                                    <form action="apply.html">
+                                        <input type="submit" value="&nbsp; Ứng tuyển &nbsp;" class="btn btn-primary btn-apply">
+                                    </form>
+                                </div>*@
+                            </div>
+                        </div>
+                        <div class="tv-overview col-md-9 col-sm-10 center-detail clearfix">
+                            @Html.Raw(@item.JOB_DECRIPTION)
+                        </div>
+                        <div class="bottom-detail clearfix">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a class="btn btn-primary btn-apply" href="~/ung-tuyen/@name/@item.JOB_ID" style="margin-left:75px">Ứng tuyển</a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="social"> <span>Chia sẻ: &nbsp;</span> <a class="social-media__link" href="" onclick="shareGoogle()"><img src="~/Resources/newhtml/images/tuyendung_google.png" alt="#"></a> &nbsp;<a class="social-media__link" style="" href="" onclick="shareFace()"><img src="~/Resources/newhtml/images/tuyendung_face.png" alt="#"></a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-table">
+                <div class="box-table-title text-left">
+                    <h3>Tin tuyển dụng khác </h3>
+                </div>
+                <div class="box-table-cont">
+                    <table id="table-fill1" class="table table-hover table-order" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Tên công việc</th>
+                                <th>Phòng ban</th>
+                                <th>Khu vực</th>
+                                <th class="text-center">Số lượng</th>
+                                <th>Ngày hết hạn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var job in ViewBag.SelectJob)
+                        {
+                            var location_name1 = Dbcontext.PROC_LOCATION_NAME_SELECTALL(job.JOB_ID);
+                            List<string> rs1 = new List<string>();
+                            foreach (var job_location in location_name1)
+                            {
+                                rs1.Add(job_location);
+                            }
+                            string name_file = GenerateSlug(job.JOB_NAME);
+                            <tr>
+                                <th scope="row"><strong class="title-order-rps">Tên công việc: </strong><a href="~/cong-viec/@name_file/@job.JOB_ID">@job.JOB_NAME</a><img class="img_hot" src="~/Resources/newhtml/images/tuyendung_img_hot.png" alt=""></th>
+                                <td><strong class="title-order-rps">Phòng ban:</strong>@job.GROUP_NAME</td>
+                                <td><strong class="title-order-rps">Khu vực:</strong>@string.Join(",", rs)</td>
+                                <td class="text-center"><strong class="title-order-rps">Số lượng:</strong> <b class="number">@job.NUMBER</b></td>
+                                <td><strong class="title-order-rps">Ngày hết hạn:</strong>@job.EXPIRED_DATE</td>
+                            </tr>
+                        }
+                        
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--End Table-->
+
+    </div>
+}
+<script>
+        function shareFace() {
+            var url = "https://www.facebook.com/sharer.php?u=" + window.location.href;
+            window.open(url, '', 'location=1,status=1,scrollbars=1,width=650,height=450');
+        }
+        function shareGoogle() {
+            var url = "https://plus.google.com/share?url=" + window.location.href;
+            window.open(url, '', 'location=1,status=1,scrollbars=1,width=650,height=450');
+        }
+
+        $(document).ready(function() {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.indexOf('safari') !== -1) {
+                if (ua.indexOf('chrome') > -1) {
+
+                } else {
+                    $("#cusmobile_id").attr("autocomplete", "off");
+                }
+            }
+        });
+</script>

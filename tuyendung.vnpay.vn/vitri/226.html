@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from tuyendung.tinhvan.com/vitri/226 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Dec 2017 07:56:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../../netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="icon" href="../img/logo.ico" type="image/x-icon"/>
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/react.js"></script>
+    <script src="../js/react-dom.js"></script>
+    <script src="../js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap-multiselect.css" type="text/css"/>
+    <script src="../../code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../css/datepicker.css"
+          type="text/css" />
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="UzVSVUZ2a2xqADogBDwmBxpQBWYIAAQ7GA0gFHAOCRUJWzMAJx4IPQ==">
+            <title>Thực tập sinh lập trình viên .Net</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/tdstyle.css" rel="stylesheet">
+<link href="../css/detail.css" rel="stylesheet"></head>
+<body>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        if (location.hash) {
+            var anchor = location.hash;
+            $('body').html("<iframe  frameborder='0' width='100%' height='2000px' src='{{constant('URL')}}admin/"+anchor+"'></iframe>");
+        };
+        $('#position-select').multiselect({
+            buttonWidth: '245px',
+            nonSelectedText: 'Chọn vị trí bạn quan tâm'
+        });
+
+    });
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56630009-1', 'auto');
+    ga('send', 'pageview');
+
+    function receiveEmail() {
+        var list = $('#position-select').val();
+
+        if (list) {
+            if (validateEmail($('#txt_email').val())) {
+                var postion = '';
+                for(var i = 0; i< list.length; i++ ){
+                    if(i==0){
+                        postion += list[i];
+                    }else{
+                        postion += ','+list[i];
+                    }
+                }
+                //          $.post("http://localhost:8080/apply/subscriber/add",
+                $.post("/apply/subscriber/add",
+                    {
+                        email: $('#txt_email').val(),
+                        position: postion
+                    });
+                alert('Bạn đã đăng ký nhận bản tin tuyển dụng Tinh Vân thành công');
+            }
+            else {
+                alert('Định dạng email không đúng');
+            }
+        } else {
+            alert('Vui lòng chọn công việc cần theo dõi');
+        }
+    };
+
+    function validateEmail(emailVal) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(emailVal);
+    }
+
+</script>
+<div class="navbar navbar-default" role="navigation" style="border-radius: 0; border-bottom: 1px solid #ccc;  background: rgba(0,0,0,0.6); background: #fff; margin-bottom: 0; padding-top: 0; padding-bottom: 0;">
+    <div class="container tvcom">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a target="_blank" href="http://tinhvan.vn/gioi-thieu/gioi-thieu-chung/" class="text-header">
+                        Giới thiệu</a></li>
+                <li>
+                    <a target="_blank" href="http://tinhvan.vn/san-pham/" class="text-header">
+                        Sản phẩm</a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://tinhvan.vn/dich-vu/" class="text-header">
+                        Dịch vụ</a></li>
+                <li>
+                    <a target="_blank" href="http://tinhvan.vn/category/tin-tuc/" class="text-header">
+                        Tin tức</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a target="_blank" href="http://tinhvan.vn/doi-tac/" class="text-header">
+                        Đối tác</a></li>
+                <li>
+                    <a target="_blank" href="http://tinhvan.vn/khach-hang/" class="text-header">
+                        Khách hàng</a></li>
+                <li class="active">
+                    <a href="#" class="text-header" style="color: #fff !important;">
+                        Tuyển dụng</a></li>
+                <li>
+                    <a target="_blank" href="http://my.tinhvan.com/" class="text-header">
+                        MyTinhVan</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="navbar navbar-default" role="navigation" style="border-radius: 0; margin-bottom: 0;  border-bottom: 0;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../index.html"><img src="../img/logo.png" style="margin-left: 15px;"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <form id="form-search" class="navbar-form navbar-right" role="search" action="http://tuyendung.tinhvan.com/tuyendung/search">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="key" placeholder="Tìm kiếm tên công việc..." value=""></div></form>
+                        <div class="tv-quot navbar-right">“Sự già nua chỉ lấy mất ở người tài trí những tính chất bất lợi của sự khôn ngoan.” - <b>J. Jonbert</b></div>
+        </div>
+    </div>
+</div>
+<div class="navbar navbar-default" role="navigation" style="border-radius: 0; border-bottom: 0px solid #ccc;  background:#242F67;  margin-bottom: 0; padding-top: 0; padding-bottom: 0;">
+    <div class="container td_tinhvan">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="active">
+                    <a href="../index.html" style="color: #fff !important; font-size: 0;">
+                        <img src="../img/House.png" alt="Search" style="width: 20px; vertical-align: top;">
+                        Trang chủ</a></li>
+                <li><a target="_blank" href="http://tinhvan.vn/gioi-thieu/gioi-thieu-chung/" class="td-text">Về Tinh Vân </a></li>
+                <li><a href="../danhsach.html" class="td-text">Cơ hội nghề nghiệp</a></li>
+                <li><a href="../help.html" class="td-text">Trợ giúp</a></li>
+                <!--                           <li><a target="_blank" href="http://vuonuomtinhvan.com/" class="td-text">Vườn ươm</a></li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div class="test">
+    	<div class="page-header">
+		<div class="container">
+			<h1 class="page-title">Thực tập sinh lập trình viên .Net</h1>
+			<h2 class="page-subtitle">
+				<ul>
+											<li class="tv-job apply-time">Part Time</li>
+										<li class="job-company">
+													<a target="_blank" href="http://tinhvanconsulting.com/">Tinhvan Consulting</a>
+											</li>
+					<li class="job-location"><i class="icon-location"></i> 1163 lượt xem</li>
+					<li class="job-date-posted"><i class="icon-calendar"></i>
+						<date>
+							45 ngày trước						</date>
+					</li>
+				</ul>
+			</h2>
+		</div>
+
+	</div>
+
+
+	<div class="entry-content">
+		<div class="container">
+			<div class="tv-meta-top">
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<a href="http://tinhvanconsulting.com/" target="_blank">
+						<img class="company_logo" src="data:image/jpeg;base64,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" alt="TVC" style="height: 65px;width: 150px;">
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div>
+						<p>
+							<b>Bắt đầu nhận hồ sơ:</b> 27-10-2017						</p>
+						<p>
+							<b>Kết thúc:</b> 30-11-2017						</p>
+						<p><b>Số lượng cần tuyển:</b> 5 người</p>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<a class="btn btn-danger id_apply btn-lg" href="../ungtuyen/226.html" style="margin-left:75px"><img style="margin-right: 6px;" class="ut" src="../img/tick.png" alt="">Ứng tuyển</a>				</div>
+
+			</div>
+
+			<div class="tv-overview-content">
+				<div itemprop="description" class="tv-overview col-md-12 col-sm-12">
+															<div class="des-align">
+						<h2 class="tv-overview-title">Mô tả công việc</h2>
+						<h4 style="text-align:justify"><ul><li><span style="font-family: &quot;Times New Roman&quot;;">Tham gia vào quá
+trình lập trình phần mềm.<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Được tìm hiểu và học hỏi về sản phẩm.<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Được hướng dẫn tham&nbsp; gia vào các group để học hỏi, bổ sung kiến thức
+nền tảng để có thể tham gia vào quá trình triển khai dự án thực tế.<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Có thể được học hỏi tiếp xúc với những khách hàng
+là những doanh nghiệp / tổ chức vừa và lớn, những tập đoàn hàng đầu Việt Nam
+như VinGroup, Unilever, Sun Group, Tập đoàn FLC, Vinamilk, Acecook,
+Techcombank, Maritimebank, VIB, SCB&nbsp; …<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Thực tập và làm việc thực tế theo các dự án</span><br></li></ul><div><span style="font-family: &quot;Times New Roman&quot;; font-weight: bold;">Nơi làm việc: Hà Nội và Hồ Chí Minh</span></div></h4>
+
+
+
+
+
+
+
+					</div>
+					<div class="des-align">
+						<h2 class="tv-overview-title">Quyền lợi</h2>
+						<h4 style="text-align:justify"><ul><li><span style="font-family: &quot;Times New Roman&quot;;">Mức lương 120.000/1 ngày<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Có cơ hội trở thành nhân viên
+chính thức của Tinhvan Consulting<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Làm việc trong môi trường văn hóa
+mang đậm bản sắc Tinh Vân là chia sẻ, hợp tác, trẻ trung, năng động, và có cơ hội
+thăng tiến cao.</span><br></li></ul></h4>
+
+
+
+<p class="MsoNormal" style="text-align:justify"><o:p></o:p></p>						<p><b>- Mức lương: 2.000.000-4.000.000<br/>- Địa điểm làm việc: Hà Nội</b></p>
+					</div>
+					<div class="des-align">
+						<h2 class="tv-overview-title">Yêu cầu</h2>
+						<h4 style="text-align:justify"><ul><li><span style="font-family: &quot;Times New Roman&quot;;">Sinh viên các trường Đại học
+chuyên ngành CNTT hoặc Toán Tin<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Có hiểu biết ngôn ngữ lập trình
+.NET, ASP.NET, C#, VB.NET , SQL Server trên Windows form/Web, MVC, Javascript<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Biết và sử dụng lập trình Winfrom
+và VB.Net là 1 lợi thế<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Khả năng tư duy, suy luận logic tốt,
+đam mê ham học hỏi, sáng tạo<br></span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Đam mê công việc, luôn muốn thử
+thách bản thân</span><br></li></ul></h4>
+
+
+
+
+
+
+
+<p class="MsoNormal" style="text-align:justify"><o:p></o:p></p>					</div>
+									<div style="text-align:center">
+						<a class="btn btn-danger id_apply btn-lg" href="../ungtuyen/226.html"><img style="margin-right: 6px;" class="ut" src="../img/tick.png" alt="">Ứng tuyển</a>					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="list-tv col-xs-12">
+				<h2>Tin tuyển dụng khác</h2>
+				<div class="col-md-12 header-list">
+					<div class="col-md-6">
+						<span>Tên công việc </span>
+					</div>
+					<div class="col-md-2">
+						<span>Số lượng</span>
+					</div>
+					<div class="col-md-2">
+						<span>Công ty</span>
+					</div>
+					<div class="col-md-2">
+						<span>Ngày hết hạn</span>
+					</div>
+				</div>
+				<div style="border: 1px solid #ccc; border-radius: 4px;overflow:hidden;border-top-right-radius:0;border-top-left-radius:0;">
+																		<div class="tv-item">
+								<div class="content col-xs-12 col-sm-10 col-md-7 col-lg-6">
+									<a href="242.html"><h4>business analyst</h4></a>								</div>
+								<div class="thumb col-xs-12 col-md-3 col-lg-2">
+									<span class="tv-salary tt" data-placement="left" >2</span>
+								</div>
+								<div class="thumb col-sm-2 col-md-2 col-lg-2">
+																			<a target="_blank" href="http://tinhvan.com/">Tinhvan Group</a>
+																	</div>
+								<div class="thumb col-lg-2">
+									<span class="tv-deadline tt" data-placement="top">30-12-2017									</span>
+								</div>
+
+							</div>
+													<div class="tv-item">
+								<div class="content col-xs-12 col-sm-10 col-md-7 col-lg-6">
+									<a href="211.html"><h4>Quản Trị hệ thống</h4></a>								</div>
+								<div class="thumb col-xs-12 col-md-3 col-lg-2">
+									<span class="tv-salary tt" data-placement="left" >2</span>
+								</div>
+								<div class="thumb col-sm-2 col-md-2 col-lg-2">
+																			<a target="_blank" href="http://tinhvan.com/">Tinhvan Solutions</a>
+																	</div>
+								<div class="thumb col-lg-2">
+									<span class="tv-deadline tt" data-placement="top">30-11-2017									</span>
+								</div>
+
+							</div>
+													<div class="tv-item">
+								<div class="content col-xs-12 col-sm-10 col-md-7 col-lg-6">
+									<a href="203.html"><h4>Technical sales</h4></a>								</div>
+								<div class="thumb col-xs-12 col-md-3 col-lg-2">
+									<span class="tv-salary tt" data-placement="left" >3</span>
+								</div>
+								<div class="thumb col-sm-2 col-md-2 col-lg-2">
+																			<a target="_blank" href="http://tinhvan.com/">Tinhvan Solutions</a>
+																	</div>
+								<div class="thumb col-lg-2">
+									<span class="tv-deadline tt" data-placement="top">31-12-2017									</span>
+								</div>
+
+							</div>
+															</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--Start of Zopim Live Chat Script-->
+<!--                <script type="text/javascript">-->
+<!--                  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=-->
+<!--                    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.-->
+<!--                      _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');-->
+<!--                      $.src='//v2.zopim.com/?2Z2Mu6WK0sGZTBwCLAYNpogsDfhYWUIQ';z.t=+new Date;$.-->
+<!--                      type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');-->
+<!--                    </script>-->
+<!--End of Zopim Live Chat Script-->
+<div class="footer">
+
+    <div class="container tv-foot">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="tv-email" style="background: transparent;">
+                <span style="font-size: 16px;font-weight: bold;">Bản tin tuyển dụng</span>
+                <div class="subscribe" style="color: #34348f;">
+                    Theo dõi thông tin của chúng tôi qua Email
+                </div>
+                <div class="mail_box">
+                    <div class="email_form clearfix">
+                        <div class="keyword">
+                            <div>
+                                <input style="border-radius: 0px; width: 100%; margin-bottom: 5px; padding:0 10px 0 10px !important" id="txt_email" class="col-xs-12 txt_email" placeholder="Địa chỉ email" type="email">
+                            </div>
+                            <div>
+                                <select id="position-select"  style="height: 31px; margin-bottom: 5px" multiple="multiple" >
+                                    <option value='1'>Tester/QA</option><option value='2'>Hệ thống thông tin/Quản trị mạng</option><option value='3'>Sale</option><option value='4'>BA/Presale</option><option value='5'>Kế toán/Tài chính</option><option value='6'>Hành chính nhân sự</option><option value='7'>PR/Marketing</option><option value='8'>Chăm sóc khách hàng/ Biên tập nội dụng/ Điều phối viên học thuật</option><option value='9'>Thiết kế</option><option value='10'>Khác</option>                                </select>
+                            </div>
+                            <div>
+                                <button style="margin-top: 5px; margin-left: 175px" id="btn_email"  class="col-xs-2 btn btn_email" onclick="receiveEmail();"><p>Submit</p></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <ul class="list-foot">
+                <li class="tv-loc">
+                    <span>Trụ sở chính</span>
+                </li>
+                <li class="tv-link">
+                    <b>Địa chỉ:</b> Tầng 8, Khách sạn Thể Thao, Làng Sinh viên Hacinco, Quận Thanh Xuân, Hà Nội <br/>
+                    <b>Điện thoại:</b> (04) 3558 9970<br/>
+                    <b>Fax:</b> (04) 3558 9971<br/>
+                    <b>Email:</b>  info@tinhvan.com
+                </li>
+            </ul>
+
+            <ul class="list-foot">
+                <li class="tv-loc">
+                    <span>Chi nhánh Tinh Vân TP. Hồ Chí Minh</span>
+                </li>
+                <li class="tv-link">
+                    <b>Địa chỉ:</b>
+                    Lầu 2 – D1 Tòa nhà Mirae Business,  268 Tô Hiến Thành  Phường 15, Quận 10, Tp. Hồ Chí Minh <br/>
+                    <b>Điện thoại:</b> (08) 6296 6481<br/>
+                    <b>Fax:</b> (08) 6296 6482<br/>
+                    <b>Email:</b>  info@tinhvan.com
+                </li>
+            </ul>
+
+
+
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <div class="fb-like-box" data-href="https://www.facebook.com/tuyendung.tinhvan" data-width="350px" data-height="250px" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true"></div>
+        </div>
+
+    </div>
+
+    <div class="container" style="line-height: 39px;">
+        <div class="col-xs-12">
+            <div style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc; overflow: hidden;">
+                <div class="foot-left" title="develop by Đàm Xuân Lập">
+                    2017 Tinhvan.com, Tinhvan Group. All rights reserved.
+                </div>
+                <div>
+                    <div class="foot_so" style="float:right">
+                        <a target="_blank" href="https://www.facebook.com/TinhvanGroup"><img src="../icon/facebook.png" pagespeed_url_hash="473393423"></a>
+                        <a target="_blank" href="https://twitter.com/tinhvangroup"><img src="../icon/twitter.png" pagespeed_url_hash="1842586480"></a>
+                        <a target="_blank" href="https://www.linkedin.com/company/tinh-van-corp"><img src="../icon/linkedin.png" pagespeed_url_hash="2923697231"></a>
+                    </div>
+                    <div class="foot_find" style="float:right;margin-right: 20px;">
+                        <p>
+                            Find us:                     </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "../../connect.facebook.net/en_US/sdk.js#xfbml=1&appId=721254621281061&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<!--                    live chat-->
+
+<div id="fb-root"></div>
+<script>
+    $(document).ready(function() {
+        var raido = $(".wrap").attr("data-toggle");
+        $(".wrap").css("width","289px");
+        if(raido==1){
+            $(".vnk-tuvan").css("display","none");$(".x").click(function(){
+                $(".wrap").slideToggle();$(".vnk-tuvan").slideToggle();});
+            $(".vnk-tuvan").click(function(){
+                $(".wrap").slideToggle();$(this).slideToggle();}); }
+        else{$(".wrap").css("display","none");
+            $(".x").click(function(){$(".wrap").slideToggle();
+                $(".vnk-tuvan").slideToggle();});
+            $(".vnk-tuvan").click(function(){$(".wrap").slideToggle();$(this).slideToggle();});}
+        $(".vnk-tuvan").click(function(){
+            $("._5rto").remove();
+        });
+    })
+
+</script>
+<style>
+    .wrap{position:fixed;
+        width:300px;
+        height: 400px; z-index:9999999;
+        right:0px; bottom:0px;}
+    .x{font-family: arial, helvetica;
+        background: rgba(78,86,101,0.8) none repeat scroll 0 0;
+        font-size:14px;
+        font-weight:bold;
+        color: #fff;display: inline-block;
+        height: 25px;line-height: 25px;position: absolute;
+        right: 18px;text-align: center;
+        top: -19px;width: 25px;z-index: 99999999;}
+    .x:hover{cursor: pointer;}
+    .pxem{text-align:left;height:20px;margin-bottom: 0;
+        margin-top: 0;background: #34495E;width:100%;
+        bottom: 0;display: block;
+        left: 0px;position: absolute;z-index: 999999999;
+        border-left: 1px solid #fff;}
+    .pxem a.axem{color: #fff;font-family: arial,helvetica;
+        font-size: 12px;line-height: 23px;padding-left: 5px;text-decoration: none;}
+    .pxem a.axem:hover{text-decoration: underline;}
+    .alogo{position: absolute;bottom: 0;right: 0px;z-index: 999999999999;
+        width: 75px;height: 20px;
+        display: inline-block;
+        background:#34495E;border-left:2px solid #2c3e50;
+        padding-right: 0px;padding-left: 5px}
+    .vnk-tuvan{position:fixed;
+        width: 170px !important;background:#4189f0;z-index:99999999;
+        right:15px;bottom:0px;
+        border-color: #2c3e50}
+    .vnk-tuvan p{color: #fff;font-size: 15px;margin: 0;
+        padding: 0 13px; text-align: left;}
+    .vnk-tuvan p a{color: #fff;font-size: 15px;
+        padding: 5px 0px 7px;margin: 0;
+        font-family: arial, helvetica;text-decoration: none;}
+    .vnk-tuvan p a:hover{text-decoration: underline;cursor: pointer;}
+    .vnk-tuvan p img {float: right;margin-top: 10px;
+</style>
+<div data-toggle="0" class="wrap" style="position:fixed; width:270px; height: 300px; ">
+    <span class="x" style="">X</span>
+    <div class="fb-page" data-adapt-container-width="true"
+         data-height="300"
+         data-hide-cover="false"
+         data-href="https://www.facebook.com/tuyendung.tinhvan/"
+         data-show-facepile="true" data-hide-cta="true" data-show-posts="false"
+         data-small-header="false" data-tabs="messages" data-width="270"
+         style="position:relative; z-index:9999999; marin-right 10px; right:0px; bottom:21px;border-left: 1px solid #fff;border-top: 1px solid #fff;">
+    </div>
+</div>
+<div class="vnk-tuvan" style="width: 268px;" >
+    <p style=" ">
+        <i class="fa fa-envelope" style="padding-right: 5px;"></i><a style="">Chat với chúng tôi</a>
+    </p>
+</div>
+<script src="../js/bootstrap.min.js"></script></body>
+
+<!-- Mirrored from tuyendung.tinhvan.com/vitri/226 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Dec 2017 07:56:10 GMT -->
+</html>

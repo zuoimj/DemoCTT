@@ -1,0 +1,170 @@
+﻿@using MvcPaging
+@using PagedList.Mvc;
+@using VNPRECRUITMENT.Models;
+@model PagedList.IPagedList<VNPAY_RECRUITMENTEntities>
+@{
+    ViewBag.Title = "Index";
+}
+
+@functions{
+    public string GenerateSlug(string Name)
+    {
+        string phrase = string.Format("{0}", Name);
+
+        string str = RemoveUnicode(phrase).ToLower();
+        // invalid chars
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"[^a-z0-9\s-]", "");
+        // convert multiple spaces into one space
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s+", " ").Trim();
+        // cut and trim
+        str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s", "-"); // hyphens
+        return str;
+    }
+
+    public static string RemoveUnicode(string text)
+    {
+        string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ",
+    "đ",
+    "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+    "í","ì","ỉ","ĩ","ị",
+    "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ",
+    "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự",
+    "ý","ỳ","ỷ","ỹ","ỵ",};
+        string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+    "d",
+    "e","e","e","e","e","e","e","e","e","e","e",
+    "i","i","i","i","i",
+    "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o",
+    "u","u","u","u","u","u","u","u","u","u","u",
+    "y","y","y","y","y",};
+        for (int i = 0; i < arr1.Length; i++)
+        {
+            text = text.Replace(arr1[i], arr2[i]);
+            text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+        }
+        return text;
+    }
+}
+@using (Html.BeginForm("Index", "Jobs"))
+{
+    <div id="main">
+        <!--Table-->
+        <div class="container">
+            <div class="box-table">
+                <div class="box-table-title">
+                    <h3>Thông tin tuyển dụng</h3>
+                    <p>@ViewBag.JobCount công việc đang tuyển dụng</p>
+                </div>
+                <div class="box-table-search">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input type="text" name="keyword" value="@ViewBag.CurrentFilter" class="form-control" id="exampleInputEmail3" placeholder="Nhập tiêu đề công việc">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                @if (ViewBag.GroupList != null)
+                                {
+                                    @Html.DropDownList("groupid", (IEnumerable<SelectListItem>)ViewBag.GroupList, "Phòng ban", new { @class = "form-control search-select", data_style = "btn-primary", aria_expanded = "true" })
+                                }
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <select name="location" id="location" class="select2 req_place form-control">
+                                    <option value="0">Tất cả</option>
+                                    @foreach (var location in ViewBag.LocationList)
+                                    {
+                                        <option value="@location.LOCATION_ID">@location.LOCATION_NAME</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="submit" value="Tìm kiếm" class="btn btn-primary form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-table-cont">
+                    <div class="table-tool-fill clearfix">
+                            @Html.Pager((int)ViewBag.pagesize, (int)ViewBag.pageno, (int)ViewBag.totalrow).Options(o => o.Action("Index").RouteValues(new { keyword = ViewBag.currentFilter, groupid = ViewBag.GroupFilter, location = ViewBag.LocationFilter }))
+                        </div>
+                    <table id="table-fill1" class="table table-hover table-order" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Tên công việc</th>
+                            <th>Phòng ban</th>
+                            <th>Khu vực</th>
+                            <th class="text-center">Số lượng</th>
+                            <th>Ngày hết hạn</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in ViewBag.SelectJob)
+                        {
+                            string name_file = GenerateSlug(item.JOB_NAME);
+                            VNPAY_RECRUITMENTEntities Dbcontext = new VNPAY_RECRUITMENTEntities();
+                            var location_name = Dbcontext.PROC_LOCATION_NAME_SELECTALL(item.JOB_ID);
+                            List<string> rs = new List<string>();
+                            foreach (var item_location in location_name)
+                            {
+                                rs.Add(item_location);
+                            }
+                            if (item.EXPIRED_DATE != null)
+                            {
+                                DateTime a = DateTime.Parse(item.EXPIRED_DATE);
+                            
+                            if (a < DateTime.Now)
+                            {
+                                <tr>
+                                    <th scope="row"><strong class="title-order-rps">Tên công việc: </strong><a href="~/cong-viec/@name_file/@item.JOB_ID">@item.JOB_NAME</a></th>
+                                    <td><strong class="title-order-rps">Phòng ban:</strong>@item.GROUP_NAME</td>
+                                    <td><strong class="title-order-rps">Khu vực:</strong>@string.Join(",", rs)</td>
+                                    <td class="text-center"><strong class="title-order-rps">Số lượng:</strong> <b class="number">@item.NUMBER</b></td>
+                                    <td style="color: red"><strong class="title-order-rps">Ngày hết hạn:</strong>@item.EXPIRED_DATE</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th scope="row"><strong class="title-order-rps">Tên công việc: </strong><a href="~/cong-viec/@name_file/@item.JOB_ID">@item.JOB_NAME</a></th>
+                                    <td><strong class="title-order-rps">Phòng ban:</strong>@item.GROUP_NAME</td>
+                                    <td><strong class="title-order-rps">Khu vực:</strong>@string.Join(",", rs)</td>
+                                    <td class="text-center"><strong class="title-order-rps">Số lượng:</strong> <b class="number">@item.NUMBER</b></td>
+                                    <td><strong class="title-order-rps">Ngày hết hạn:</strong>@item.EXPIRED_DATE</td>
+                                </tr>
+                            }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th scope="row"><strong class="title-order-rps">Tên công việc: </strong><a href="~/cong-viec/@name_file/@item.JOB_ID">@item.JOB_NAME</a></th>
+                                    <td><strong class="title-order-rps">Phòng ban:</strong>@item.GROUP_NAME</td>
+                                    <td><strong class="title-order-rps">Khu vực:</strong>@string.Join(",", rs)</td>
+                                    <td class="text-center"><strong class="title-order-rps">Số lượng:</strong> <b class="number">@item.NUMBER</b></td>
+                                    <td><strong class="title-order-rps">Ngày hết hạn:</strong>@item.EXPIRED_DATE</td>
+                                </tr>
+                            }
+                            
+                        }
+                            
+                        </tbody>
+                    </table>
+                    <div class="table-tool-fill clearfix">
+                        @Html.Pager((int)ViewBag.pagesize, (int)ViewBag.pageno, (int)ViewBag.totalrow).Options(o => o.Action("Index").RouteValues(new { keyword = ViewBag.currentFilter, groupid = ViewBag.GroupFilter, location = ViewBag.LocationFilter }))
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--End Table-->
+
+    </div>
+
+
+}
+@section scripts{
+    
+}

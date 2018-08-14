@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VNPAY_RECRUITMENTModelStoreContainer" CdmEntityContainer="VNPAY_RECRUITMENTEntities">
+    <EntitySetMapping Name="BANNERs">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.BANNER">
+        <MappingFragment StoreEntitySet="BANNER">
+          <ScalarProperty Name="BANNER_ID" ColumnName="BANNER_ID" />
+          <ScalarProperty Name="BANNER_TITLE" ColumnName="BANNER_TITLE" />
+          <ScalarProperty Name="BANNER_LINK" ColumnName="BANNER_LINK" />
+          <ScalarProperty Name="BANNER_STATUS" ColumnName="BANNER_STATUS" />
+          <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Candidates">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.Candidate">
+        <MappingFragment StoreEntitySet="Candidate">
+          <ScalarProperty Name="CANDIDATE_ID" ColumnName="CANDIDATE_ID" />
+          <ScalarProperty Name="CANDIDATE_NAME" ColumnName="CANDIDATE_NAME" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_FUNCT_ROLE">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.CMS_FUNCT_ROLE">
+        <MappingFragment StoreEntitySet="CMS_FUNCT_ROLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FUN_ID" ColumnName="FUN_ID" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_FUNCTIONS">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.CMS_FUNCTIONS">
+        <MappingFragment StoreEntitySet="CMS_FUNCTIONS">
+          <ScalarProperty Name="FUN_ID" ColumnName="FUN_ID" />
+          <ScalarProperty Name="FUN_NAME" ColumnName="FUN_NAME" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+          <ScalarProperty Name="FUN_KEY" ColumnName="FUN_KEY" />
+          <ScalarProperty Name="FUN_LEVEL" ColumnName="FUN_LEVEL" />
+          <ScalarProperty Name="CSSCLASS" ColumnName="CSSCLASS" />
+          <ScalarProperty Name="ORD" ColumnName="ORD" />
+          <ScalarProperty Name="ISDISPLAY" ColumnName="ISDISPLAY" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_ROLES">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.CMS_ROLES">
+        <MappingFragment StoreEntitySet="CMS_ROLES">
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="ROLE_KEY" ColumnName="ROLE_KEY" />
+          <ScalarProperty Name="ORD" ColumnName="ORD" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+          <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+          <ScalarProperty Name="MODIFIED_ON" ColumnName="MODIFIED_ON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_USER_LOG">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.CMS_USER_LOG">
+        <MappingFragment StoreEntitySet="CMS_USER_LOG">
+          <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+          <ScalarProperty Name="LOG_TYPE" ColumnName="LOG_TYPE" />
+          <ScalarProperty Name="LOG_TEXT" ColumnName="LOG_TEXT" />
+          <ScalarProperty Name="LOG_DATA" ColumnName="LOG_DATA" />
+          <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+          <ScalarProperty Name="CLIENT_INFO" ColumnName="CLIENT_INFO" />
+          <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_USERS">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.CMS_USERS">
+        <MappingFragment StoreEntitySet="CMS_USERS">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ISAPPROVED" ColumnName="ISAPPROVED" />
+          <ScalarProperty Name="ISLOCKEDOUT" ColumnName="ISLOCKEDOUT" />
+          <ScalarProperty Name="LASTLOGIN" ColumnName="LASTLOGIN" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="MODIFIED_ON" ColumnName="MODIFIED_ON" />
+          <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CVs">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.CV">
+        <MappingFragment StoreEntitySet="CV">
+          <ScalarProperty Name="CV_ID" ColumnName="CV_ID" />
+          <ScalarProperty Name="CANDIDATE_ID" ColumnName="CANDIDATE_ID" />
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="CV_STATUS" ColumnName="CV_STATUS" />
+          <ScalarProperty Name="CV_LINK" ColumnName="CV_LINK" />
+          <ScalarProperty Name="CV_UPLOAD" ColumnName="CV_UPLOAD" />
+          <ScalarProperty Name="CV_DESCRIPTION" ColumnName="CV_DESCRIPTION" />
+          <ScalarProperty Name="CV_LOCATION" ColumnName="CV_LOCATION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="ACTIVE_BANNER" ColumnName="ACTIVE_BANNER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Job_Location">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.Job_Location">
+        <MappingFragment StoreEntitySet="Job_Location">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="JOB_LOCATION_ID" ColumnName="JOB_LOCATION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="POSITION_ID" ColumnName="POSITION_ID" />
+          <ScalarProperty Name="POSITION_NAME" ColumnName="POSITION_NAME" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobPositions">
+      <EntityTypeMapping TypeName="VNPAY_RECRUITMENTModel.JobPosition">
+        <MappingFragment StoreEntitySet="JobPosition">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="POSITION_ID" ColumnName="POSITION_ID" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PROC_BANNER_DELETE_BYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_BANNER_DELETE_BYID" />
+    <FunctionImportMapping FunctionImportName="PROC_BANNER_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_BANNER_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_BANNER_SELECT_BY_ID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_BANNER_SELECT_BY_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_BANNER_SELECT_BY_ID_Result">
+          <ScalarProperty Name="BANNER_ID" ColumnName="BANNER_ID" />
+          <ScalarProperty Name="BANNER_TITLE" ColumnName="BANNER_TITLE" />
+          <ScalarProperty Name="BANNER_LINK" ColumnName="BANNER_LINK" />
+          <ScalarProperty Name="BANNER_STATUS" ColumnName="BANNER_STATUS" />
+          <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_BANNER_SELECT_TO_PLAY" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_BANNER_SELECT_TO_PLAY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_BANNER_SELECT_TO_PLAY_Result">
+          <ScalarProperty Name="BANNER_ID" ColumnName="BANNER_ID" />
+          <ScalarProperty Name="BANNER_TITLE" ColumnName="BANNER_TITLE" />
+          <ScalarProperty Name="BANNER_LINK" ColumnName="BANNER_LINK" />
+          <ScalarProperty Name="BANNER_STATUS" ColumnName="BANNER_STATUS" />
+          <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_BANNER_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_BANNER_SELECTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_BANNER_SELECTALL_Result">
+          <ScalarProperty Name="BANNER_ID" ColumnName="BANNER_ID" />
+          <ScalarProperty Name="BANNER_TITLE" ColumnName="BANNER_TITLE" />
+          <ScalarProperty Name="BANNER_LINK" ColumnName="BANNER_LINK" />
+          <ScalarProperty Name="BANNER_STATUS" ColumnName="BANNER_STATUS" />
+          <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_BANNER_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_BANNER_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_BANNER_UPDATE_WITHOUT_IMAGE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_BANNER_UPDATE_WITHOUT_IMAGE" />
+    <FunctionImportMapping FunctionImportName="PROC_CANDIDATE_DELETEBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CANDIDATE_DELETEBYID" />
+    <FunctionImportMapping FunctionImportName="PROC_CANDIDATE_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CANDIDATE_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_CANDIDATE_SELECT_ID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CANDIDATE_SELECT_ID" />
+    <FunctionImportMapping FunctionImportName="PROC_CMS_ROLES_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_ROLES_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_CMS_ROLES_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_ROLES_SELECTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CMS_ROLES_SELECTALL_Result">
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="ROLE_KEY" ColumnName="ROLE_KEY" />
+          <ScalarProperty Name="ORD" ColumnName="ORD" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CMS_ROLES_SELECTBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_ROLES_SELECTBYID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CMS_ROLES_SELECTBYID_Result">
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="ROLE_KEY" ColumnName="ROLE_KEY" />
+          <ScalarProperty Name="ORD" ColumnName="ORD" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CMS_ROLES_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_ROLES_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_CMS_USER_LOGIN" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_USER_LOGIN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CMS_USER_LOGIN_Result">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CMS_USERS_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_USERS_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_CMS_USERS_SEARCH" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_USERS_SEARCH">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CMS_USERS_SEARCH_Result">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ISAPPROVED" ColumnName="ISAPPROVED" />
+          <ScalarProperty Name="ISLOCKEDOUT" ColumnName="ISLOCKEDOUT" />
+          <ScalarProperty Name="LASTLOGIN" ColumnName="LASTLOGIN" />
+          <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CMS_USERS_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_USERS_SELECTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CMS_USERS_SELECTALL_Result">
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ISAPPROVED" ColumnName="ISAPPROVED" />
+          <ScalarProperty Name="ISLOCKEDOUT" ColumnName="ISLOCKEDOUT" />
+          <ScalarProperty Name="LASTLOGIN" ColumnName="LASTLOGIN" />
+          <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CMS_USERS_SELECTBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_USERS_SELECTBYID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CMS_USERS_SELECTBYID_Result">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ISAPPROVED" ColumnName="ISAPPROVED" />
+          <ScalarProperty Name="ISLOCKEDOUT" ColumnName="ISLOCKEDOUT" />
+          <ScalarProperty Name="LASTLOGIN" ColumnName="LASTLOGIN" />
+          <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CMS_USERS_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_USERS_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_CMS_USERS_UPDATE_PASS" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CMS_USERS_UPDATE_PASS" />
+    <FunctionImportMapping FunctionImportName="PROC_CV_DELETEBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_DELETEBYID" />
+    <FunctionImportMapping FunctionImportName="PROC_CV_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_CV_SELECT_DASHBOARD" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_SELECT_DASHBOARD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CV_SELECT_DASHBOARD_Result">
+          <ScalarProperty Name="CANDIDATE_NAME" ColumnName="CANDIDATE_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CV_STATUS" ColumnName="CV_STATUS" />
+          <ScalarProperty Name="CV_ID" ColumnName="CV_ID" />
+          <ScalarProperty Name="CV_LINK" ColumnName="CV_LINK" />
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CV_SELECT_STATUS" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_SELECT_STATUS" />
+    <FunctionImportMapping FunctionImportName="PROC_CV_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_SELECTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CV_SELECTALL_Result">
+          <ScalarProperty Name="CANDIDATE_NAME" ColumnName="CANDIDATE_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CV_STATUS" ColumnName="CV_STATUS" />
+          <ScalarProperty Name="CV_ID" ColumnName="CV_ID" />
+          <ScalarProperty Name="CV_LINK" ColumnName="CV_LINK" />
+          <ScalarProperty Name="CV_DESCRIPTION" ColumnName="CV_DESCRIPTION" />
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CV_SELECTBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_SELECTBYID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_CV_SELECTBYID_Result">
+          <ScalarProperty Name="CANDIDATE_NAME" ColumnName="CANDIDATE_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CV_STATUS" ColumnName="CV_STATUS" />
+          <ScalarProperty Name="CV_ID" ColumnName="CV_ID" />
+          <ScalarProperty Name="CV_LINK" ColumnName="CV_LINK" />
+          <ScalarProperty Name="CV_UPLOAD" ColumnName="CV_UPLOAD" />
+          <ScalarProperty Name="CV_DESCRIPTION" ColumnName="CV_DESCRIPTION" />
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CV_UNREAD_COUNT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_UNREAD_COUNT" />
+    <FunctionImportMapping FunctionImportName="PROC_CV_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_CV_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_GROUP_DELETEBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_GROUP_DELETEBYID" />
+    <FunctionImportMapping FunctionImportName="PROC_GROUP_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_GROUP_SELECTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_GROUP_SELECTALL_Result">
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_GROUP_SELECTBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_GROUP_SELECTBYID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_GROUP_SELECTBYID_Result">
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_GROUPS_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_GROUPS_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_GROUPS_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_GROUPS_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_ACTIVE_BANNER_FRONTEND" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_ACTIVE_BANNER_FRONTEND">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_ACTIVE_BANNER_FRONTEND_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_COUNT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_COUNT" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_CV_APPLY_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_CV_APPLY_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_DELETEBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_DELETEBYID" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SEARCH_BY_NAME" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SEARCH_BY_NAME" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECT_BYID_ACTIVE_BANNER" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECT_BYID_ACTIVE_BANNER" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_BACKEND" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_BACKEND">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BACKEND_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_BACKEND_DASHBOARD" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_BACKEND_DASHBOARD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BACKEND_DASHBOARD_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="CV_UNREAD" ColumnName="CV_UNREAD" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_BACKEND_WITHOU_DATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_BACKEND_WITHOU_DATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BACKEND_WITHOU_DATE_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_BANNER" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_BANNER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BANNER_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+          <ScalarProperty Name="ACTIVE_BANNER" ColumnName="ACTIVE_BANNER" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_BY_GROUP" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_BY_GROUP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BY_GROUP_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_FRONTEND" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_FRONTEND">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_FRONTEND_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_FRONTEND_FILTER_WITH_LOCATION" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_FRONTEND_FILTER_WITH_LOCATION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_FRONTEND_FILTER_WITH_LOCATION_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_SORTBY_JOB_NAME" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_SORTBY_JOB_NAME">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_SORTBY_JOB_NAME_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_WITH_LOCATION" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_WITH_LOCATION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_WITH_LOCATION_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTALL_WITH_LOCATION_WITHOUT_DATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTALL_WITH_LOCATION_WITHOUT_DATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_WITH_LOCATION_WITHOUT_DATE_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBY_CREATED_DATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBY_CREATED_DATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_CREATED_DATE_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBY_EXPIRED_DATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBY_EXPIRED_DATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_EXPIRED_DATE_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBY_GROUP_NAME" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBY_GROUP_NAME">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_GROUP_NAME_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBY_JOB_NAME" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBY_JOB_NAME">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_JOB_NAME_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBY_JOB_SALARY_HIGHER" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBY_JOB_SALARY_HIGHER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_JOB_SALARY_HIGHER_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBY_JOB_SALARY_LOWER" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBY_JOB_SALARY_LOWER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_JOB_SALARY_LOWER_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBY_STATUS" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBY_STATUS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_STATUS_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBYID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBYID_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID1" ColumnName="GROUP_ID1" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SELECTBYID_BACKEND" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SELECTBYID_BACKEND">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBYID_BACKEND_Result">
+          <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="JOB_NAME" ColumnName="JOB_NAME" />
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="EXPIRED_DATE" ColumnName="EXPIRED_DATE" />
+          <ScalarProperty Name="JOB_DECRIPTION" ColumnName="JOB_DECRIPTION" />
+          <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+          <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+          <ScalarProperty Name="VIEW_COUNT" ColumnName="VIEW_COUNT" />
+          <ScalarProperty Name="JOB_STATUS" ColumnName="JOB_STATUS" />
+          <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
+          <ScalarProperty Name="CV_APPLY_COUNT" ColumnName="CV_APPLY_COUNT" />
+          <ScalarProperty Name="ACTIVE_BANNER" ColumnName="ACTIVE_BANNER" />
+          <ScalarProperty Name="CREATED_DATE1" ColumnName="CREATED_DATE1" />
+          <ScalarProperty Name="EXPIRED_DATE1" ColumnName="EXPIRED_DATE1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_JOB_SET_BANNER" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_SET_BANNER" />
+    <FunctionImportMapping FunctionImportName="PROC_Job_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_Job_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_Job_UPDATE123" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_Job_UPDATE123" />
+    <FunctionImportMapping FunctionImportName="PROC_Job_VIEWCOUNT_UPDATE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_Job_VIEWCOUNT_UPDATE" />
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_ADD_NEW" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_ADD_NEW" />
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_DELETE" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_DELETE" />
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_DELETEBYID" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_DELETEBYID" />
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_INSERT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_INSERT" />
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_NAME_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_NAME_SELECTALL" />
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_NAME_SELECTALL123" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_NAME_SELECTALL123">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_LOCATION_NAME_SELECTALL123_Result">
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_SELECT_NAME_ONLY" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_SELECT_NAME_ONLY" />
+    <FunctionImportMapping FunctionImportName="PROC_LOCATION_SELECTALL" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_LOCATION_SELECTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.PROC_LOCATION_SELECTALL_Result">
+          <ScalarProperty Name="LOCATION_NAME" ColumnName="LOCATION_NAME" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+          <ScalarProperty Name="TOTALROW" ColumnName="TOTALROW" />
+          <ScalarProperty Name="ROWNUMBER" ColumnName="ROWNUMBER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_REFRESH_JOB" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_REFRESH_JOB" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="VNPAY_RECRUITMENTModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="VNPAY_RECRUITMENTModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="VNPAY_RECRUITMENTModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="VNPAY_RECRUITMENTModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="VNPAY_RECRUITMENTModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VNPAY_RECRUITMENTModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="VNPAY_RECRUITMENTModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="VNPAY_RECRUITMENTModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="PROC_JOB_ACTIVE_BANNER_COUNT" FunctionName="VNPAY_RECRUITMENTModel.Store.PROC_JOB_ACTIVE_BANNER_COUNT" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,167 @@
+﻿@model VNPRECRUITMENT.Models.Job
+
+@{
+    ViewBag.Title = "Thêm công việc";
+}
+
+<style>
+    .btn-active {
+        background-color: #ABBAC3 !important;
+    }
+</style>
+<script src="@Url.Content("~/Resources/plugins/ckfinder/ckfinder.js")" type="text/javascript"></script>
+
+<div class="page-header">
+    <h1>@ViewBag.title</h1>
+</div>
+
+@*@Html.AntiForgeryToken()*@
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal" role="form" action="@Url.Action("Create")" method="post">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Phòng ban:<span style="color: red">*</span> </label>
+                <div class="col-sm-10">
+                    @if (ViewBag.GroupList != null)
+                    {
+                        @Html.DropDownList("Group_ID", (IEnumerable<SelectListItem>)ViewBag.GroupList, "Phòng ban", new { @class = "form-control search-select", data_style = "btn-primary", aria_expanded = "false", id = "Group_ID" })
+                    }
+
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <a href="@Url.Action("Create", "Groups")" class="btn btn-dark-grey btn-sm">Tạo phòng ban</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Tên công việc: <span style="color: red">*</span></label>
+                <div class="col-sm-10">
+                    <input type="text" name="Job_name" maxlength="500" id="Job_name" value="" placeholder="Nhập tên công việc" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="form-field-1">Trạng thái:<span style="color: red">*</span> </label>
+                <div class="col-sm-10">
+                    <select class="form-control search-select" id="status" name="status" required>
+                        <option value="1">Xuất bản</option>
+                        <option value="2">Lưu nháp</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Số Lượng:<span style="color: red">*</span> </label>
+                <div class="col-sm-10">
+                    <input type="number" name="Number" id="Number" value="" placeholder="Nhập số lượng tuyển dụng" class="form-control" required>
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                <label class="col-sm-2 control-label">Lương: </label>
+                <div class="col-sm-10">
+                    <input type="text" name="Salary" id="Salary" value="" placeholder="Nhập mức lương" class="form-control" oninvalid="alert('Bạn phải nhập mức lương!');" required>
+                </div>
+            </div>*@
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Ngày hết hạn:<span style="color: red">*</span> </label>
+                <div class="col-sm-10">
+                    <input type="text" name="Expired_Date" id="datepicker" value="@DateTime.Now.Date.ToString("dd-MM-yyyy")" placeholder="Ngày hết hạn" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Khu vực:<span style="color: red">*</span> </label>
+                <div class="col-sm-10">
+                    <select class="js-example-basic-multiple" name="Location_Name" multiple="multiple" required>
+                        @foreach(var location in ViewBag.LocationList)
+                        {
+                            <option value="@location.LOCATION_ID">@location.LOCATION_NAME</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Upload ảnh:<span style="color: red">*</span></label>
+                <div class="col-sm-8">
+                    <div>
+                        <input type="text" value="" class="form-control" id="PostThumbnail" name="image" required>
+                        
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-blue btn-sm" id="btnSelectImg" name="btnSelectImg"><i class="glyphicon glyphicon-folder-open"></i><span class="hidden-xs">&nbsp;Chọn ảnh</span></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nội dung: <span style="color: red">*</span> </label>
+                <div class="col-sm-10">
+
+                    <textarea name="Job_Description" id="Job_Description" required>&lt;p&gt;&lt;/p&gt;</textarea>
+                    <script type="text/javascript">
+                        CKEDITOR.replace('Job_Description',
+                            {
+                                filebrowserBrowseUrl: '/tuyen-dung/Resources/plugins/ckfinder/ckfinder.html',
+                                filebrowserImageBrowseUrl: '/tuyen-dung/Resources/plugins/ckfinder/ckfinder.html?Type=CmsImages',
+                                filebrowserFlashBrowseUrl: '/tuyen-dung/Resources/plugins/ckfinder/ckfinder.html?Type=Flash',
+                                filebrowserUploadUrl: '/tuyen-dung/Resources/plugins/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+                                filebrowserImageUploadUrl: '/tuyen-dung/Resources/plugins/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+                                filebrowserFlashUploadUrl: '/tuyen-dung/Resources/plugins/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+                            });
+                    </script>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="clearfix form-actions center">
+                <button type="submit" class="btn btn-primary btn-sm">Thêm mới</button>
+                <a href="@Url.Action("Index", "Jobs")" class="btn btn-dark-grey btn-sm">Hủy bỏ</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section scripts{
+    <link href="~/Resources/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="~/Resources/js/jquery-ui.js"></script>
+    <script src="~/Resources/select2/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn_vi').focus();
+            $("#btnSelectImg").click(function () {
+                var finder = new CKFinder();
+                finder.selectActionFunction = function (fileUrl) {
+                    $('#PostThumbnail').val(fileUrl);
+                };
+                finder.popup();
+                return false;
+            });
+        });
+    </script>
+    
+
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+</script>
+    
+
+   
+}

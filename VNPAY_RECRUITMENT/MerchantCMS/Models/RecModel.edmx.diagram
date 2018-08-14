@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1306035912944df597e78bb2249f7c1b" Name="Diagram1">
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.BANNER" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.Candidate" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.CMS_FUNCT_ROLE" Width="1.5" PointX="2.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.CMS_FUNCTIONS" Width="1.5" PointX="8.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.CMS_ROLES" Width="1.5" PointX="10.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.CMS_USER_LOG" Width="1.5" PointX="10.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.CMS_USERS" Width="1.5" PointX="10.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.CV" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.Group" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.Job" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.Job_Location" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.Location" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.Position" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.sysdiagram" Width="1.5" PointX="2.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNPAY_RECRUITMENTModel.JobPosition" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="VNPAY_RECRUITMENTModel.FK_CV_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="VNPAY_RECRUITMENTModel.FK_CV_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="VNPAY_RECRUITMENTModel.FK_Job_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="VNPAY_RECRUITMENTModel.FK_Job_Location_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="VNPAY_RECRUITMENTModel.FK_JobPosition_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="VNPAY_RECRUITMENTModel.FK_Job_Location_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="VNPAY_RECRUITMENTModel.FK_JobPosition_Position" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

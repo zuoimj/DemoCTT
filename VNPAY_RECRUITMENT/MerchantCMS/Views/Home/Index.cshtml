@@ -1,0 +1,224 @@
+﻿@using MvcPaging
+@using PagedList.Mvc;
+@using VNPRECRUITMENT.Models;
+@functions{
+    public string GenerateSlug(string Name)
+    {
+        string phrase = string.Format("{0}", Name);
+
+        string str = RemoveUnicode(phrase).ToLower();
+    // invalid chars
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"[^a-z0-9\s-]", "");
+    // convert multiple spaces into one space
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s+", " ").Trim();
+    // cut and trim
+        str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s", "-"); // hyphens
+        return str;
+    }
+
+    public static string RemoveUnicode(string text)
+    {
+        string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ",
+            "đ",
+            "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+            "í","ì","ỉ","ĩ","ị",
+            "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ",
+            "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự",
+            "ý","ỳ","ỷ","ỹ","ỵ",};
+        string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+            "d",
+            "e","e","e","e","e","e","e","e","e","e","e",
+            "i","i","i","i","i",
+            "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o",
+            "u","u","u","u","u","u","u","u","u","u","u",
+            "y","y","y","y","y",};
+        for (int i = 0; i < arr1.Length; i++)
+        {
+            text = text.Replace(arr1[i], arr2[i]);
+            text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+        }
+        return text;
+    }
+}
+<div id="Slider">
+    <div class="container">
+        <div id="slider_carousel" class="owl-carousel owl-theme">
+            @foreach (var banner in ViewBag.Select_Banner)
+            {
+                var name_slug = GenerateSlug(banner.JOB_NAME);
+                VNPAY_RECRUITMENTEntities Dbcontext = new VNPAY_RECRUITMENTEntities();
+                var location_name = Dbcontext.PROC_LOCATION_NAME_SELECTALL(banner.JOB_ID);
+                List<string> rs = new List<string>();
+                foreach (var item_location in location_name)
+                {
+                    rs.Add(item_location);
+                }
+                <div class="item">
+                    <a href="~/cong-viec/@name_slug/@banner.JOB_ID" title="@banner.JOB_NAME">
+                        @if (banner.IMAGE != null)
+                        {
+                            <span class="img_slide"><img src="@banner.IMAGE" alt="@banner.JOB_NAME" title="@banner.JOB_NAME"><strong>@banner.JOB_NAME</strong></span>
+                        }
+                        else
+                        {
+                            <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img1.png" alt="@banner.JOB_NAME" title="@banner.JOB_NAME"><strong>@banner.JOB_NAME</strong></span>
+                        }
+                        
+                        <strong class="title_slide">@banner.GROUP_NAME</strong>
+                    </a>
+                    <div class="decrip_box">
+                        <div class="decrip_cont">
+                            <p>Khu vực ứng tuyển: @string.Join(",", rs)</p>
+                            <p>Kết thúc: @banner.EXPIRED_DATE</p>
+                            <p>Số lượng cần tuyển: @banner.NUMBER người</p>
+                            <a href="~/cong-viec/@name_slug/@banner.JOB_ID" title="#" class="btn btn-primary">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+            @*<div class="item">
+                <a href="@Url.Action("Index","Jobs")" title="#">
+                    <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img2.png" alt="#" title="#"><strong>Tester</strong></span>
+                    <strong class="title_slide">Kiểm thử phần mềm</strong>
+                </a>
+                <div class="decrip_box">
+                    <div class="decrip_cont">
+                        <p>Khu vực ứng tuyển: Hồ Chí Minh</p>
+                        <p>Kết thúc: 31/03/2018</p>
+                        <p>Số lượng cần tuyển: 3 người</p>
+                        <a href="@Url.Action("Index","Jobs")" title="#" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <a href="@Url.Action("Index","Jobs")" title="#">
+                    <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img3.png" alt="#" title="#"><strong>.Net</strong></span>
+                    <strong class="title_slide">Lập trình viên .NET</strong>
+                </a>
+                <div class="decrip_box">
+                    <div class="decrip_cont">
+                        <p>Khu vực ứng tuyển: Hồ Chí Minh</p>
+                        <p>Kết thúc: 31/03/2018</p>
+                        <p>Số lượng cần tuyển: 3 người</p>
+                        <a href="@Url.Action("Index","Jobs")" title="#" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <a href="@Url.Action("Index","Jobs")" title="#">
+                    <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img4.png" alt="#" title="#"><strong>Java/.Net</strong></span>
+                    <strong class="title_slide">Lập trình viên JAVA/.NET</strong>
+                </a>
+                <div class="decrip_box">
+                    <div class="decrip_cont">
+                        <p>Khu vực ứng tuyển: Hồ Chí Minh</p>
+                        <p>Kết thúc: 31/03/2018</p>
+                        <p>Số lượng cần tuyển: 3 người</p>
+                        <a href="@Url.Action("Index","Jobs")" title="#" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <a href="@Url.Action("Index","Jobs")" title="#">
+                    <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img1.png" alt="#" title="#"><strong>Marketing</strong></span>
+                    <strong class="title_slide">Trợ lý Marketing Kinh doanh</strong>
+                </a>
+                <div class="decrip_box">
+                    <div class="decrip_cont">
+                        <p>Khu vực ứng tuyển: Hồ Chí Minh</p>
+                        <p>Kết thúc: 31/03/2018</p>
+                        <p>Số lượng cần tuyển: 3 người</p>
+                        <a href="@Url.Action("Index","Jobs")" title="#" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <a href="@Url.Action("Index","Jobs")" title="#">
+                    <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img2.png" alt="#" title="#"><strong>Tester</strong></span>
+                    <strong class="title_slide">Kiểm thử phần mềm</strong>
+                </a>
+                <div class="decrip_box">
+                    <div class="decrip_cont">
+                        <p>Khu vực ứng tuyển: Hồ Chí Minh</p>
+                        <p>Kết thúc: 31/03/2018</p>
+                        <p>Số lượng cần tuyển: 3 người</p>
+                        <a href="@Url.Action("Index","Jobs")" title="#" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <a href="@Url.Action("Index","Jobs")" title="#">
+                    <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img3.png" alt="#" title="#"><strong>.Net</strong></span>
+                    <strong class="title_slide">Lập trình viên .NET</strong>
+                </a>
+                <div class="decrip_box">
+                    <div class="decrip_cont">
+                        <p>Khu vực ứng tuyển: Hồ Chí Minh</p>
+                        <p>Kết thúc: 31/03/2018</p>
+                        <p>Số lượng cần tuyển: 3 người</p>
+                        <a href="@Url.Action("Index","Jobs")" title="#" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <a href="@Url.Action("Index","Jobs")" title="#">
+                    <span class="img_slide"><img src="~/Resources/newhtml/images/tuyendung_img4.png" alt="#" title="#"><strong>Java/.Net</strong></span>
+                    <strong class="title_slide">Lập trình viên JAVA/.NET</strong>
+                </a>
+                <div class="decrip_box">
+                    <div class="decrip_cont">
+                        <p>Khu vực ứng tuyển: Hồ Chí Minh</p>
+                        <p>Kết thúc: 31/03/2018</p>
+                        <p>Số lượng cần tuyển: 3 người</p>
+                        <a href="@Url.Action("Index","Jobs")" title="#" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>
+<!--end Slider-->
+<div id="main">
+    <!--Table-->
+    <div class="container">
+        <div class="box-table">
+            <div class="box-table-title"><h3>THÔNG TIN TUYỂN DỤNG NỔI BẬT</h3></div>
+            <div class="box-table-cont">
+                <table id="table-fill1" class="table table-hover table-order" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tên công việc</th>
+                            <th>Phòng ban</th>
+                            <th>Khu vực</th>
+                            <th class="text-center">Số lượng</th>
+                            <th>Ngày hết hạn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in ViewBag.SelectJob)
+                    {
+                        var name_slug = GenerateSlug(item.JOB_NAME);
+                        VNPAY_RECRUITMENTEntities Dbcontext = new VNPAY_RECRUITMENTEntities();
+                        var location_name = Dbcontext.PROC_LOCATION_NAME_SELECTALL(item.JOB_ID);
+                        List<string> rs = new List<string>();
+                        foreach (var item_location in location_name)
+                        {
+                            rs.Add(item_location);
+                        }
+                        
+                        <tr>
+                            <th scope="row"><strong class="title-order-rps">Tên công việc: </strong><a href="~/cong-viec/@name_slug/@item.JOB_ID">@item.JOB_NAME</a><img class="img_hot" src="~/Resources/newhtml/images/tuyendung_img_hot.png" alt=""></th>
+                            <td><strong class="title-order-rps">Phòng ban:</strong>@item.GROUP_NAME</td>
+                            <td><strong class="title-order-rps">Khu vực:</strong>@string.Join(",", rs)</td>
+                            <td class="text-center"><strong class="title-order-rps">Số lượng:</strong> <b class="number">@item.NUMBER</b></td>
+                            <td><strong class="title-order-rps">Ngày hết hạn:</strong>@item.EXPIRED_DATE</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

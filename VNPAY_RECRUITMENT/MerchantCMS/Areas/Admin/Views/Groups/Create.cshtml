@@ -1,0 +1,32 @@
+﻿@model VNPRECRUITMENT.Models.Group
+
+@{
+    ViewBag.Title = "Thêm phòng ban";
+}
+
+@using (Html.BeginForm()) 
+{
+    @*@Html.AntiForgeryToken()*@
+
+    <form class="form-horizontal" role="form" action="@Url.Action("Create")" method="post">
+
+        <div class="page-header">
+            <h1>@ViewBag.title</h1>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Tên Phòng</label>
+            <div class="col-sm-10">
+                <input type="text" name="groupname" value="" placeholder="Nhập tên phòng ban" class="form-control">
+             </div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="clearfix form-actions center">
+            <button type="submit" class="btn btn-primary btn-sm">Thêm mới</button>
+            <a href="@Url.Action("Index", "Groups")" class="btn btn-dark-grey btn-sm">Hủy bỏ</a>
+        </div>
+    </form>
+}
+
+<div>
+</div>

@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.4 Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- start: HEAD -->
+<!-- Mirrored from www.cliptheme.com/preview/admin/clip-one/charts.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Sep 2015 07:34:26 GMT -->
+<head>
+    
+    <title>VNPAY CONTENT MANAGEMENT SYSTEM</title>
+    
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- end: META -->
+    @Styles.Render("~/resources/admin/css")
+    @Styles.Render("~/resources/admin/tinycss")
+    
+    <link href="~/Resources/admin/styles/css/loading.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="~/Resources/admin/images/favicon.ico" />
+    
+    <script src="@Url.Content("~/Resources/plugins/ckeditor/ckeditor.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Resources/plugins/ckfinder/ckfinder.js")" type="text/javascript"></script>
+</head>
+<!-- end: HEAD -->
+<!-- start: BODY -->
+<body class="layout-boxed" ng-app="vnpApp">
+    <route-loading-indicator></route-loading-indicator>
+    <state-loading-indicator></state-loading-indicator>
+    <!-- start: HEADER -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <!-- start: TOP NAVIGATION CONTAINER -->
+        <div class="container">
+            <div class="navbar-header">
+                <!-- start: RESPONSIVE MENU TOGGLER -->
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"> <span class="clip-list-2"></span> </button>
+                <!-- end: RESPONSIVE MENU TOGGLER -->
+                <!-- start: LOGO -->
+                <a class="navbar-brand" href="@Url.Action("Index", "Home", new {area = "admin"}, null)"> <img src="~/Resources/admin/images/logo.png" width="140" height="50" alt="" /> </a>
+                <!-- end: LOGO -->
+            </div>
+            <div class="navbar-tools">
+                <!-- start: TOP NAVIGATION MENU -->
+                <ul class="nav navbar-right">
+                    <!-- start: USER DROPDOWN -->
+                    <li class="dropdown current-user">
+                        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#"> <img src="~/Resources/admin/images/ava.png" width="30" height="30" alt="" /> <span class="username">Tài khoản</span> <i class="clip-chevron-down"></i> </a>
+                        <ul class="dropdown-menu">
+                            <li><a target="_blank" href="@Url.Action("Index", "Home", new {area = ""})"> Website</a></li>
+                            <li><a href="@Url.Action("ChangePass", "UserManager")"> Đổi mật khẩu</a></li>
+                            <li><a target="_self" href="@Url.Action("Logout", "Users")"> Thoát</a></li>
+                            <!-- end: USER DROPDOWN -->
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end: TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- end: TOP NAVIGATION CONTAINER -->
+    </div>
+    <!-- end: HEADER -->
+    <!-- start: MAIN CONTAINER -->
+    <div class="main-container">
+        <div class="navbar-content">
+            <!-- start: SIDEBAR -->
+            <div class="main-navigation navbar-collapse collapse">
+                <!-- start: SIDEBAR -->
+                <div class="main-navigation navbar-collapse collapse">
+                    <!-- start: MAIN NAVIGATION MENU -->
+                    <ul class="main-navigation-menu">
+                        <li class="active">
+                            <a target="_self" href="@Url.Action("Index", "Home", new {area = "admin"}, null)">
+                                <i class="fa fa-dashboard"></i>
+                                <span class="title"> Màn hình chính </span><span class="selected"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_self" href="@Url.Action("Index", "Jobs")">
+                                <i class="fa fa-newspaper-o"></i>
+                                <span class="title"> Quản lý công việc </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_self" href="@Url.Action("Index", "Groups")">
+                                <i class="fa fa-clipboard"></i>
+                                <span class="title"> Quản lý phòng ban </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Index", "Candidates")">
+                                <i class="fa fa-envelope"></i>
+                                <span class="title"> Quản lý ứng viên </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Banner")">
+                                <i class="fa fa-newspaper-o"></i>
+                                <span class="title"> Banner </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_self" href="@Url.Action("Index", "Job_Location")">
+                                <i class="fa fa-server"></i>
+                                <span class="title"> Quản lý khu vực</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a target="_self" href="javascript:void(0)">
+                                <i class="fa fa-cogs"></i>
+                                <span class="title">Hệ thống </span><i class="icon-arrow"></i>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="@Url.Action("Index", "UserManager", new {area = "admin"}, null)">
+                                        <span class="title">Quản lý người sử dụng</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                       
+                    </ul>
+                    <!-- end: MAIN NAVIGATION MENU -->
+                    <div class="navigation-toggler">
+                        <i class="clip-chevron-left"></i> <i class="clip-chevron-right"></i>
+                    </div>
+                </div>
+                <!-- end: SIDEBAR -->
+                <!-- start: MAIN MENU TOGGLER BUTTON -->
+                <!-- end: MAIN MENU TOGGLER BUTTON -->
+            </div>
+            <!-- end: SIDEBAR -->
+        </div>
+        <!-- start: PAGE -->
+        
+        <div class="main-content">
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="alertBox" class="alert @TempData["AlertType"] hide align-center">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+            @RenderBody()
+            <div data-ng-view></div>
+        </div>
+        <!-- end: PAGE -->
+    </div>
+    <!-- end: MAIN CONTAINER -->
+    <!-- start: FOOTER -->
+    <div class="footer clearfix">
+        <div class="footer-items"> <span class="go-top"><i class="clip-chevron-up"></i></span> </div>
+    </div>
+    <!-- end: FOOTER -->
+    @Scripts.Render("~/resources/admin/js")
+    @Scripts.Render("~/resources/utils")
+    @Scripts.Render("~/resources/angularjs")
+    @Scripts.Render("~/resources/admin/tinyjs")
+    <script>
+        $(function () {
+            $('#alertBox').removeClass('hide');
+            $('#alertBox').delay(1000).slideUp(1500);
+        });
+    </script>
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            //Set menu active
+            $('.main-navigation-menu > li a').parent().removeClass('active open');
+            var url = $(location).attr('pathname');
+            $(".main-navigation-menu > li a[href='" + url + "']").parent().addClass("active open");
+            $(".main-navigation-menu > li a[href='" + url + "']").parent().parent().parent().addClass("active open");
+            $(".main-navigation-menu > li a[href='" + url + "']").parent().parent().parent().parent().parent().addClass("active open");
+
+            $(".search-select").select2();
+        });
+    </script>
+    @RenderSection("scripts", false)
+</body>
+<!-- end: BODY -->
+</html>

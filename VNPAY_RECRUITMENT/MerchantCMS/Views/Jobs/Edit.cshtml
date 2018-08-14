@@ -1,0 +1,116 @@
+﻿@model VNPRECRUITMENT.Models.Job
+
+@{
+    ViewBag.Title = "Candidates";
+}
+
+@using (Html.BeginForm("Edit", "Jobs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div id="main">
+        <!--Table-->
+        <div class="container">
+            <div class="box-table">
+                <div class="box-table-title">
+                    @foreach (var item in ViewBag.Job)
+                    {
+                        <h3>
+                            Ứng tuyển vào vị trí @item.JOB_NAME
+                        </h3>
+                    }
+                        <p>Form ứng tuyển</p>
+                    </div>
+                        <form>
+                            <div class="box-table-cont col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="">Họ và tên <span class="clred">*</span></label>
+                                            <input autocomplete="on" maxlength="50" size="50" required autofocus type="text" class="form-control required" name="candidate_name" id="candidate_name" placeholder="Nguyễn Văn A">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Giới tính <span class="clred">*</span></label>
+                                            <select class="form-control" id="gender" name="sex">
+                                                <option value="1">Nam</option>
+                                                <option value="0">Nữ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="">Số điện thoại <span class="clred">*</span></label>
+                                            <input autocomplete="on" required type="text" pattern="[0-9]{10,}" class="form-control required" name="phonenumber" placeholder="0987654xxx" id="phone" maxlength="11">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Email <span class="clred">*</span></label>
+                                            <input autocomplete="on" type="email" pattern="[a-z0-9._%+-]+&#64[a-z0-9.-]+\.[a-z]{2,3}$" name="email" class="form-control required" id="account_mail" placeholder="example@gmail.com" maxlength="250" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Khu vực lựa chọn <span class="clred">*</span></label>
+                                            <select class="select2 req_place form-control" id="location" name="Location_id" required>
+                                                @foreach (var location in ViewBag.LocationList)
+                                                {
+                                                    <option value="@location.LOCATION_ID">@location.LOCATION_NAME</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Mô tả về bản thân <span class="clred">*</span></label>
+                                            <textarea name="cv_description" id="cv_description" class="form-control required" placeholder="Miêu tả ngắn lý do bạn phù hợp với công việc này" maxlength="1000" required rows="7"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Hồ sơ dưới dạng tệp tin hoặc link <span class="clred">*</span></label>
+                                            <ul class="radio-list">
+                                                <li>
+                                                    <input type="radio" id="option1" name="selector" checked>
+                                                    <label for="option1">@Html.TextBox("file", "", new { type = "file" })</label>
+                                                    <div class="check"></div>
+                                                </li>
+
+                                                <li>
+                                                    <input type="radio" id="option2" name="selector">
+                                                    <label for="option2"><input for="option2" type="url" class="input-text form-control" name="cv_link" id="link_website" placeholder="http://" value="" maxlength="250"></label>
+
+                                                    <div class="check"></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="submit clearfix text-center"><input value="&nbsp; Ứng tuyển &nbsp;" class="btn btn-primary" type="submit"></div>
+                        </form>
+
+                    </div>
+                </div>
+
+        <!--End Table-->
+
+                    </div>
+}
+<style>
+    textarea {
+        resize: none;
+    }
+</style>

@@ -1,0 +1,40 @@
+﻿@using VNPRECRUITMENT.Controllers
+@{
+    var b = new BaseController();
+}
+<!-- Footer -->
+<style type="text/css">
+    .footer-widget {
+        padding-right: 20px !important;
+        max-width: 240px;
+    }
+</style>
+<footer class="home-footer" ng-controller="FooterController">
+    <span ng-init="GetMenu()"></span>
+    <div class="container">
+        <div class="top-footer" ng-bind-html="menu">
+           
+        </div><!-- End .top-footer -->
+        <div class="bottom-footer">
+            <div class="copyright pull-left">
+            </div>
+        </div><!-- End bottom-footer -->
+    </div>
+</footer><!-- End footer -->
+<script type='text/javascript'>
+    window._sbzq || function(e) {
+        e._sbzq = [];
+        var t = e._sbzq;
+        t.push(["_setAccount", 53128]);
+        var n = e.location.protocol == "https:" ? "https:" : "http:";
+        var r = document.createElement("script");
+        r.type = "text/javascript";
+        r.async = true;
+        r.src = n + "//static.subiz.com/public/js/loader.js";
+        var i = document.getElementsByTagName("script")[0];
+        i.parentNode.insertBefore(r, i)
+    }(window);
+</script>
+<script>
+    _sbzq.push(['setLanguage', '@b.CurrentLangCode']);
+</script>

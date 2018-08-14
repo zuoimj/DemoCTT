@@ -1,0 +1,1244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VNPAY_RECRUITMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BANNER">
+    <Key>
+      <PropertyRef Name="BANNER_ID" />
+    </Key>
+    <Property Name="BANNER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BANNER_TITLE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BANNER_LINK" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="BANNER_STATUS" Type="Int32" />
+    <Property Name="IMAGE_URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ISDELETED" Type="Boolean" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Candidate">
+    <Key>
+      <PropertyRef Name="CANDIDATE_ID" />
+    </Key>
+    <Property Name="CANDIDATE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CANDIDATE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SEX" Type="Int32" />
+    <Property Name="PHONENUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="0" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CVs" Relationship="Self.FK_CV_Candidate" FromRole="Candidate" ToRole="CV" />
+  </EntityType>
+  <EntityType Name="CMS_FUNCT_ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FUN_ID" Type="Int32" Nullable="false" />
+    <Property Name="ROLE_ID" Type="Int32" Nullable="false" />
+    <Property Name="ISACTIVE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ISDELETED" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CMS_FUNCTIONS">
+    <Key>
+      <PropertyRef Name="FUN_ID" />
+    </Key>
+    <Property Name="FUN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FUN_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PARENT_ID" Type="Int32" />
+    <Property Name="FUN_KEY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FUN_LEVEL" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CSSCLASS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ORD" Type="Int32" />
+    <Property Name="ISDISPLAY" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ISDELETED" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CMS_ROLES">
+    <Key>
+      <PropertyRef Name="ROLE_ID" />
+    </Key>
+    <Property Name="ROLE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROLE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ROLE_KEY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ORD" Type="Byte" />
+    <Property Name="ISACTIVE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ISDELETED" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_ON" Type="DateTime" Precision="3" />
+    <Property Name="MODIFIED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIED_ON" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CMS_USER_LOG">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOG_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LOG_TEXT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LOG_DATA" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IP_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CLIENT_INFO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LOG_DATE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CMS_USERS">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FULLNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ISAPPROVED" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ISLOCKEDOUT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LASTLOGIN" Type="DateTime" Precision="3" />
+    <Property Name="ROLE_ID" Type="Int32" Nullable="false" />
+    <Property Name="ISDELETED" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CREATED_ON" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIED_ON" Type="DateTime" Precision="3" />
+    <Property Name="MODIFIED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CV">
+    <Key>
+      <PropertyRef Name="CV_ID" />
+    </Key>
+    <Property Name="CV_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CANDIDATE_ID" Type="Int32" />
+    <Property Name="JOB_ID" Type="Int32" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <Property Name="CV_STATUS" Type="Int32" />
+    <Property Name="CV_LINK" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CV_UPLOAD" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CV_DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="CV_LOCATION" Type="Int32" />
+    <NavigationProperty Name="Candidate" Relationship="Self.FK_CV_Candidate" FromRole="CV" ToRole="Candidate" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_CV_Job" FromRole="CV" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="GROUP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GROUP_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK_Job_Group" FromRole="Group" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JOB_ID" />
+    </Key>
+    <Property Name="JOB_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GROUP_ID" Type="Int32" />
+    <Property Name="JOB_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NUMBER" Type="Int32" />
+    <Property Name="SALARY" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EXPIRED_DATE" Type="DateTime" Precision="0" />
+    <Property Name="JOB_DECRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IMAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <Property Name="VIEW_COUNT" Type="Int32" />
+    <Property Name="JOB_STATUS" Type="Int32" />
+    <Property Name="UPDATED_ON" Type="DateTime" Precision="0" />
+    <Property Name="CV_APPLY_COUNT" Type="Int32" />
+    <Property Name="ACTIVE_BANNER" Type="Boolean" />
+    <NavigationProperty Name="CVs" Relationship="Self.FK_CV_Job" FromRole="Job" ToRole="CV" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_Job_Group" FromRole="Job" ToRole="Group" />
+    <NavigationProperty Name="Job_Location" Relationship="Self.FK_Job_Location_Job" FromRole="Job" ToRole="Job_Location" />
+    <NavigationProperty Name="JobPositions" Relationship="Self.FK_JobPosition_Job" FromRole="Job" ToRole="JobPosition" />
+  </EntityType>
+  <EntityType Name="Job_Location">
+    <Key>
+      <PropertyRef Name="JOB_LOCATION_ID" />
+    </Key>
+    <Property Name="JOB_ID" Type="Int32" Nullable="false" />
+    <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <Property Name="JOB_LOCATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_Job_Location_Job" FromRole="Job_Location" ToRole="Job" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_Job_Location_Location" FromRole="Job_Location" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LOCATION_ID" />
+    </Key>
+    <Property Name="LOCATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOCATION_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Job_Location" Relationship="Self.FK_Job_Location_Location" FromRole="Location" ToRole="Job_Location" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="POSITION_ID" />
+    </Key>
+    <Property Name="POSITION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="POSITION_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="JobPositions" Relationship="Self.FK_JobPosition_Position" FromRole="Position" ToRole="JobPosition" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="JobPosition">
+    <Key>
+      <PropertyRef Name="JOB_ID" />
+      <PropertyRef Name="POSITION_ID" />
+      <PropertyRef Name="ISDELETED" />
+    </Key>
+    <Property Name="JOB_ID" Type="Int32" Nullable="false" />
+    <Property Name="POSITION_ID" Type="Int32" Nullable="false" />
+    <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_JobPosition_Job" FromRole="JobPosition" ToRole="Job" />
+    <NavigationProperty Name="Position" Relationship="Self.FK_JobPosition_Position" FromRole="JobPosition" ToRole="Position" />
+  </EntityType>
+  <Association Name="FK_CV_Candidate">
+    <End Role="Candidate" Type="Self.Candidate" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CV" Type="Self.CV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidate">
+        <PropertyRef Name="CANDIDATE_ID" />
+      </Principal>
+      <Dependent Role="CV">
+        <PropertyRef Name="CANDIDATE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CV_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CV" Type="Self.CV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JOB_ID" />
+      </Principal>
+      <Dependent Role="CV">
+        <PropertyRef Name="JOB_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Job_Group">
+    <End Role="Group" Type="Self.Group" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="GROUP_ID" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Job_Location_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Job_Location" Type="Self.Job_Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JOB_ID" />
+      </Principal>
+      <Dependent Role="Job_Location">
+        <PropertyRef Name="JOB_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobPosition_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="JobPosition" Type="Self.JobPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JOB_ID" />
+      </Principal>
+      <Dependent Role="JobPosition">
+        <PropertyRef Name="JOB_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Job_Location_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Job_Location" Type="Self.Job_Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LOCATION_ID" />
+      </Principal>
+      <Dependent Role="Job_Location">
+        <PropertyRef Name="LOCATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobPosition_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="JobPosition" Type="Self.JobPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="POSITION_ID" />
+      </Principal>
+      <Dependent Role="JobPosition">
+        <PropertyRef Name="POSITION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VNPAY_RECRUITMENTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BANNERs" EntityType="Self.BANNER" />
+    <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+    <EntitySet Name="CMS_FUNCT_ROLE" EntityType="Self.CMS_FUNCT_ROLE" />
+    <EntitySet Name="CMS_FUNCTIONS" EntityType="Self.CMS_FUNCTIONS" />
+    <EntitySet Name="CMS_ROLES" EntityType="Self.CMS_ROLES" />
+    <EntitySet Name="CMS_USER_LOG" EntityType="Self.CMS_USER_LOG" />
+    <EntitySet Name="CMS_USERS" EntityType="Self.CMS_USERS" />
+    <EntitySet Name="CVs" EntityType="Self.CV" />
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="Job_Location" EntityType="Self.Job_Location" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="Positions" EntityType="Self.Position" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="JobPositions" EntityType="Self.JobPosition" />
+    <AssociationSet Name="FK_CV_Candidate" Association="Self.FK_CV_Candidate">
+      <End Role="Candidate" EntitySet="Candidates" />
+      <End Role="CV" EntitySet="CVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CV_Job" Association="Self.FK_CV_Job">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="CV" EntitySet="CVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Job_Group" Association="Self.FK_Job_Group">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Job_Location_Job" Association="Self.FK_Job_Location_Job">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="Job_Location" EntitySet="Job_Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobPosition_Job" Association="Self.FK_JobPosition_Job">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="JobPosition" EntitySet="JobPositions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Job_Location_Location" Association="Self.FK_Job_Location_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Job_Location" EntitySet="Job_Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobPosition_Position" Association="Self.FK_JobPosition_Position">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="JobPosition" EntitySet="JobPositions" />
+    </AssociationSet>
+    <FunctionImport Name="PROC_BANNER_DELETE_BYID">
+      <Parameter Name="P_BANNER_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_BANNER_INSERT">
+      <Parameter Name="P_BANNER_TITLE" Mode="In" Type="String" />
+      <Parameter Name="P_BANNER_LINK" Mode="In" Type="String" />
+      <Parameter Name="P_IMAGE_URL" Mode="In" Type="String" />
+      <Parameter Name="P_BANNER_STATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_BANNER_SELECT_BY_ID" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_BANNER_SELECT_BY_ID_Result)">
+      <Parameter Name="P_BANNER_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_BANNER_SELECT_TO_PLAY" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_BANNER_SELECT_TO_PLAY_Result)" />
+    <FunctionImport Name="PROC_BANNER_SELECTALL" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_BANNER_SELECTALL_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="P_KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_BANNER_UPDATE">
+      <Parameter Name="P_BANNER_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_BANNER_TITLE" Mode="In" Type="String" />
+      <Parameter Name="P_BANNER_LINK" Mode="In" Type="String" />
+      <Parameter Name="P_BANNER_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_IMAGE_URL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_BANNER_UPDATE_WITHOUT_IMAGE">
+      <Parameter Name="P_BANNER_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_BANNER_TITLE" Mode="In" Type="String" />
+      <Parameter Name="P_BANNER_LINK" Mode="In" Type="String" />
+      <Parameter Name="P_BANNER_STATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CANDIDATE_DELETEBYID">
+      <Parameter Name="P_CANDIDATE_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CANDIDATE_INSERT">
+      <Parameter Name="P_CANDIDATE_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_SEX" Mode="In" Type="Int32" />
+      <Parameter Name="P_PHONENUMBER" Mode="In" Type="String" />
+      <Parameter Name="P_EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CANDIDATE_SELECT_ID" ReturnType="Collection(Int32)">
+      <Parameter Name="P_PHONENUMBER" Mode="In" Type="String" />
+      <Parameter Name="P_EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_ROLES_INSERT">
+      <Parameter Name="P_ROLE_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_ROLE_KEY" Mode="In" Type="String" />
+      <Parameter Name="P_ORD" Mode="In" Type="Int32" />
+      <Parameter Name="P_ISACTIVE" Mode="In" Type="String" />
+      <Parameter Name="P_ISDELETED" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_ROLES_SELECTALL" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CMS_ROLES_SELECTALL_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_ROLES_SELECTBYID" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CMS_ROLES_SELECTBYID_Result)">
+      <Parameter Name="P_ROLE_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_ROLES_UPDATE">
+      <Parameter Name="P_ROLE_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_ROLE_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_ROLE_KEY" Mode="In" Type="String" />
+      <Parameter Name="P_ORD" Mode="In" Type="Int32" />
+      <Parameter Name="P_ISACTIVE" Mode="In" Type="String" />
+      <Parameter Name="P_ISDELETED" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_USER_LOGIN" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CMS_USER_LOGIN_Result)">
+      <Parameter Name="p_username" Mode="In" Type="String" />
+      <Parameter Name="p_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_USERS_INSERT">
+      <Parameter Name="P_USERNAME" Mode="In" Type="String" />
+      <Parameter Name="P_EMAIL" Mode="In" Type="String" />
+      <Parameter Name="P_FIRSTNAME" Mode="In" Type="String" />
+      <Parameter Name="P_LASTNAME" Mode="In" Type="String" />
+      <Parameter Name="P_FULLNAME" Mode="In" Type="String" />
+      <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="P_ISAPPROVED" Mode="In" Type="String" />
+      <Parameter Name="P_ISLOCKEDOUT" Mode="In" Type="String" />
+      <Parameter Name="P_CREATEDBY" Mode="In" Type="String" />
+      <Parameter Name="P_ROLE_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_USERS_SEARCH" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CMS_USERS_SEARCH_Result)">
+      <Parameter Name="P_USERNAME" Mode="In" Type="String" />
+      <Parameter Name="P_ROLEID" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_USERS_SELECTALL" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CMS_USERS_SELECTALL_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_USERS_SELECTBYID" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CMS_USERS_SELECTBYID_Result)">
+      <Parameter Name="P_USER_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_USERS_UPDATE">
+      <Parameter Name="P_USER_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_USERNAME" Mode="In" Type="String" />
+      <Parameter Name="P_EMAIL" Mode="In" Type="String" />
+      <Parameter Name="P_FULLNAME" Mode="In" Type="String" />
+      <Parameter Name="P_ISLOCKEDOUT" Mode="In" Type="String" />
+      <Parameter Name="P_ROLE_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CMS_USERS_UPDATE_PASS">
+      <Parameter Name="P_USER_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_DELETEBYID">
+      <Parameter Name="P_CV_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_INSERT">
+      <Parameter Name="P_CANDIDATE_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_CV_LINK" Mode="In" Type="String" />
+      <Parameter Name="P_CV_UPLOAD" Mode="In" Type="String" />
+      <Parameter Name="P_CV_DESCRIPTION" Mode="In" Type="String" />
+      <Parameter Name="P_LOCATION_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_SELECT_DASHBOARD" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CV_SELECT_DASHBOARD_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="P_CANDIDATE_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_SELECT_STATUS" ReturnType="Collection(Int32)">
+      <Parameter Name="P_CV_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_SELECTALL" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CV_SELECTALL_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="P_CANDIDATE_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_SELECTBYID" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_CV_SELECTBYID_Result)">
+      <Parameter Name="P_CV_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_UNREAD_COUNT" ReturnType="Collection(Int32)">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CV_UPDATE">
+      <Parameter Name="P_CV_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_GROUP_DELETEBYID">
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_GROUP_SELECTALL" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_GROUP_SELECTALL_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_GROUP_SELECTBYID" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_GROUP_SELECTBYID_Result)">
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_GROUPS_INSERT">
+      <Parameter Name="P_GROUP_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_ISDELETED" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_GROUPS_UPDATE">
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_NAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_ACTIVE_BANNER_FRONTEND" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_ACTIVE_BANNER_FRONTEND_Result)" />
+    <FunctionImport Name="PROC_JOB_COUNT" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="PROC_JOB_CV_APPLY_UPDATE">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_DELETEBYID">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_INSERT">
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_JOB_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_NUMBER" Mode="In" Type="Int32" />
+      <Parameter Name="P_SALARY" Mode="In" Type="Decimal" />
+      <Parameter Name="P_CREATED_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_EXPIRED_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_JOB_DECRIPTION" Mode="In" Type="String" />
+      <Parameter Name="P_IMAGE" Mode="In" Type="String" />
+      <Parameter Name="P_JOB_STATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SEARCH_BY_NAME" ReturnType="Collection(Int32)">
+      <Parameter Name="P_JOB_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_CREATED_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_NUMBER" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECT_BYID_ACTIVE_BANNER" ReturnType="Collection(Boolean)">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_CREATED_FROM" Mode="In" Type="DateTime" />
+      <Parameter Name="P_CREATED_TO" Mode="In" Type="DateTime" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_BACKEND" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BACKEND_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_CREATED_FROM" Mode="In" Type="DateTime" />
+      <Parameter Name="P_CREATED_TO" Mode="In" Type="DateTime" />
+      <Parameter Name="P_EXPIRED_TO" Mode="In" Type="DateTime" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_BACKEND_DASHBOARD" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BACKEND_DASHBOARD_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_BACKEND_WITHOU_DATE" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BACKEND_WITHOU_DATE_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_BANNER" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BANNER_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_BY_GROUP" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_BY_GROUP_Result)">
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_FRONTEND" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_FRONTEND_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_FRONTEND_FILTER_WITH_LOCATION" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_FRONTEND_FILTER_WITH_LOCATION_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_LOCATION_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_SORTBY_JOB_NAME" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_SORTBY_JOB_NAME_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_WITH_LOCATION" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_WITH_LOCATION_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_CREATED_FROM" Mode="In" Type="DateTime" />
+      <Parameter Name="P_CREATED_TO" Mode="In" Type="DateTime" />
+      <Parameter Name="P_EXPIRED_TO" Mode="In" Type="DateTime" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_LOCATION_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTALL_WITH_LOCATION_WITHOUT_DATE" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTALL_WITH_LOCATION_WITHOUT_DATE_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_LOCATION_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBY_CREATED_DATE" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_CREATED_DATE_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_STARTED_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_END_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBY_EXPIRED_DATE" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_EXPIRED_DATE_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_STARTED_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_END_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBY_GROUP_NAME" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_GROUP_NAME_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBY_JOB_NAME" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_JOB_NAME_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_JOB_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBY_JOB_SALARY_HIGHER" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_JOB_SALARY_HIGHER_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_SALARY" Mode="In" Type="Decimal" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBY_JOB_SALARY_LOWER" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_JOB_SALARY_LOWER_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_SALARY" Mode="In" Type="Decimal" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBY_STATUS" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBY_STATUS_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_ISDELETED" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBYID" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBYID_Result)">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SELECTBYID_BACKEND" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_JOB_SELECTBYID_BACKEND_Result)">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_JOB_SET_BANNER">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_ACTIVE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_Job_UPDATE">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_GROUP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_JOB_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_NUMBER" Mode="In" Type="Int32" />
+      <Parameter Name="P_SALARY" Mode="In" Type="Decimal" />
+      <Parameter Name="P_EXPIRED_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_JOB_DECRIPTION" Mode="In" Type="String" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_IMAGE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_Job_UPDATE123">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_JOB_NAME" Mode="In" Type="String" />
+      <Parameter Name="P_NUMBER" Mode="In" Type="Int32" />
+      <Parameter Name="P_SALARY" Mode="In" Type="Decimal" />
+      <Parameter Name="P_EXPIRED_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_JOB_DECRIPTION" Mode="In" Type="String" />
+      <Parameter Name="P_STATUS" Mode="In" Type="Int32" />
+      <Parameter Name="P_IMAGE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_Job_VIEWCOUNT_UPDATE">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_ADD_NEW">
+      <Parameter Name="P_LOCATION_NAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_DELETE">
+      <Parameter Name="P_LOCATION_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_DELETEBYID">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_INSERT">
+      <Parameter Name="P_LOCATION_ID" Mode="In" Type="Int32" />
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_NAME_SELECTALL" ReturnType="Collection(String)">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_NAME_SELECTALL123" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_LOCATION_NAME_SELECTALL123_Result)">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_SELECT_NAME_ONLY" ReturnType="Collection(String)">
+      <Parameter Name="P_LOCATION_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_LOCATION_SELECTALL" ReturnType="Collection(VNPAY_RECRUITMENTModel.PROC_LOCATION_SELECTALL_Result)">
+      <Parameter Name="P_PAGESIZE" Mode="In" Type="Int32" />
+      <Parameter Name="P_PAGENO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TOTALROW" Mode="InOut" Type="Int32" />
+      <Parameter Name="P_LOCATION_NAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_REFRESH_JOB">
+      <Parameter Name="P_JOB_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(VNPAY_RECRUITMENTModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(VNPAY_RECRUITMENTModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="PROC_JOB_ACTIVE_BANNER_COUNT" ReturnType="Collection(Int32)" />
+  </EntityContainer>
+  <ComplexType Name="PROC_BANNER_SELECT_BY_ID_Result">
+    <Property Type="Int32" Name="BANNER_ID" Nullable="false" />
+    <Property Type="String" Name="BANNER_TITLE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="BANNER_LINK" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="BANNER_STATUS" Nullable="true" />
+    <Property Type="String" Name="IMAGE_URL" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="true" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_BANNER_SELECT_TO_PLAY_Result">
+    <Property Type="Int32" Name="BANNER_ID" Nullable="false" />
+    <Property Type="String" Name="BANNER_TITLE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="BANNER_LINK" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="BANNER_STATUS" Nullable="true" />
+    <Property Type="String" Name="IMAGE_URL" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="true" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_BANNER_SELECTALL_Result">
+    <Property Type="Int32" Name="BANNER_ID" Nullable="false" />
+    <Property Type="String" Name="BANNER_TITLE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="BANNER_LINK" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="BANNER_STATUS" Nullable="true" />
+    <Property Type="String" Name="IMAGE_URL" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="true" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_CMS_ROLES_SELECTALL_Result">
+    <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+    <Property Type="String" Name="ROLE_NAME" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ROLE_KEY" Nullable="true" MaxLength="20" />
+    <Property Type="Byte" Name="ORD" Nullable="true" />
+    <Property Type="String" Name="ISACTIVE" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ISDELETED" Nullable="false" MaxLength="1" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_CMS_ROLES_SELECTBYID_Result">
+    <Property Type="String" Name="ROLE_NAME" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ROLE_KEY" Nullable="true" MaxLength="20" />
+    <Property Type="Byte" Name="ORD" Nullable="true" />
+    <Property Type="String" Name="ISACTIVE" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ISDELETED" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="PROC_CMS_USER_LOGIN_Result">
+    <Property Type="Int32" Name="USER_ID" Nullable="false" />
+    <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="FULLNAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FIRSTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LASTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ROLE_ID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_CMS_USERS_SEARCH_Result">
+    <Property Type="Int32" Name="USER_ID" Nullable="false" />
+    <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="FIRSTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LASTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FULLNAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ISAPPROVED" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="ISLOCKEDOUT" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="LASTLOGIN" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="CREATED_ON" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CREATED_BY" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+    <Property Type="String" Name="ISDELETED" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ROLE_NAME" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_CMS_USERS_SELECTALL_Result">
+    <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="FIRSTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LASTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FULLNAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ISAPPROVED" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="ISLOCKEDOUT" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="LASTLOGIN" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="CREATED_ON" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CREATED_BY" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+    <Property Type="String" Name="ISDELETED" Nullable="false" MaxLength="1" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_CMS_USERS_SELECTBYID_Result">
+    <Property Type="Int32" Name="USER_ID" Nullable="false" />
+    <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="FIRSTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LASTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FULLNAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ISAPPROVED" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="ISLOCKEDOUT" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="LASTLOGIN" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="CREATED_ON" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CREATED_BY" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+    <Property Type="String" Name="ISDELETED" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="PROC_CV_SELECT_DASHBOARD_Result">
+    <Property Type="String" Name="CANDIDATE_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="SEX" Nullable="true" />
+    <Property Type="String" Name="PHONENUMBER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="CV_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="CV_ID" Nullable="false" />
+    <Property Type="String" Name="CV_LINK" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="Int32" Name="GROUP_ID" Nullable="false" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="String" Name="LOCATION_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_CV_SELECTALL_Result">
+    <Property Type="String" Name="CANDIDATE_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="SEX" Nullable="true" />
+    <Property Type="String" Name="PHONENUMBER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="CV_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="CV_ID" Nullable="false" />
+    <Property Type="String" Name="CV_LINK" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CV_DESCRIPTION" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="Int32" Name="GROUP_ID" Nullable="false" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="String" Name="LOCATION_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_CV_SELECTBYID_Result">
+    <Property Type="String" Name="CANDIDATE_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="SEX" Nullable="true" />
+    <Property Type="String" Name="PHONENUMBER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="CV_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="CV_ID" Nullable="false" />
+    <Property Type="String" Name="CV_LINK" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CV_UPLOAD" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CV_DESCRIPTION" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="Int32" Name="GROUP_ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="PROC_GROUP_SELECTALL_Result">
+    <Property Type="Int32" Name="GROUP_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_GROUP_SELECTBYID_Result">
+    <Property Type="Int32" Name="GROUP_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_ACTIVE_BANNER_FRONTEND_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="String" Name="IMAGE" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_BACKEND_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="CV_APPLY_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_BACKEND_DASHBOARD_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="CV_APPLY_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="CV_UNREAD" Nullable="true" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_BACKEND_WITHOU_DATE_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="CV_APPLY_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_BANNER_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="CV_APPLY_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="String" Name="IMAGE" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="ACTIVE_BANNER" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_BY_GROUP_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_FRONTEND_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_FRONTEND_FILTER_WITH_LOCATION_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="String" Name="LOCATION_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_SORTBY_JOB_NAME_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_WITH_LOCATION_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="CV_APPLY_COUNT" Nullable="true" />
+    <Property Type="String" Name="LOCATION_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTALL_WITH_LOCATION_WITHOUT_DATE_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="CV_APPLY_COUNT" Nullable="true" />
+    <Property Type="String" Name="LOCATION_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBY_CREATED_DATE_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBY_EXPIRED_DATE_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBY_GROUP_NAME_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBY_JOB_NAME_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBY_JOB_SALARY_HIGHER_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBY_JOB_SALARY_LOWER_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBY_STATUS_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBYID_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="Int32" Name="GROUP_ID1" Nullable="true" />
+    <Property Type="String" Name="GROUP_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="CREATED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PROC_JOB_SELECTBYID_BACKEND_Result">
+    <Property Type="Int32" Name="JOB_ID" Nullable="false" />
+    <Property Type="Int32" Name="GROUP_ID" Nullable="true" />
+    <Property Type="String" Name="JOB_NAME" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="NUMBER" Nullable="true" />
+    <Property Type="Decimal" Name="SALARY" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="true" />
+    <Property Type="DateTime" Name="EXPIRED_DATE" Nullable="true" />
+    <Property Type="String" Name="JOB_DECRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="IMAGE" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+    <Property Type="Int32" Name="VIEW_COUNT" Nullable="true" />
+    <Property Type="Int32" Name="JOB_STATUS" Nullable="true" />
+    <Property Type="DateTime" Name="UPDATED_ON" Nullable="true" />
+    <Property Type="Int32" Name="CV_APPLY_COUNT" Nullable="true" />
+    <Property Type="Boolean" Name="ACTIVE_BANNER" Nullable="true" />
+    <Property Type="String" Name="CREATED_DATE1" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EXPIRED_DATE1" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="PROC_LOCATION_NAME_SELECTALL123_Result">
+    <Property Type="String" Name="LOCATION_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="LOCATION_ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="PROC_LOCATION_SELECTALL_Result">
+    <Property Type="String" Name="LOCATION_NAME" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="LOCATION_ID" Nullable="false" />
+    <Property Type="Int32" Name="TOTALROW" Nullable="true" />
+    <Property Type="Int64" Name="ROWNUMBER" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

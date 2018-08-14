@@ -1,0 +1,142 @@
+﻿@model List<VNPRECRUITMENT.Models.PROC_CMS_ROLES_SELECTALL_Result>
+
+<div class="container container-edit" ng-controller="UserManagerController">
+    <span ng-init="GetList()"></span>
+    <div class="page-header">
+        <h1>Quản lý người sử dụng</h1>
+    </div>
+    <div class="row">
+        <!-- PAGE CONTENT BEGINS -->
+        <form class="form-horizontal" role="form">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label" for="form-field-1">Tên đăng nhập: </label>
+                    <div class="col-sm-7">
+                        <input type="text" value="" ng-model="username" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label" for="form-field-1">Phân quyền: </label>
+                    <div class="col-sm-7">
+                        <select class="form-control" ng-model="roleId">
+                            @{
+                                <option value="0">Tất cả</option>
+                                if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <option value="@item.ROLE_ID">@item.ROLE_NAME</option>
+                                    }
+                                }
+
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="clearfix form-actions center">
+                <a href="javascript:void(0)" ng-click="GetList()" class="btn btn-primary btn-sm">Tìm kiếm</a>
+                <a href="@Url.Action("AddUser")" class="btn btn-dark-grey btn-sm">Thêm mới</a>
+            </div>
+        </form>
+
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <table class="table table-striped table-hover" id="sample-table-2">
+                <thead>
+                    <tr>
+                        <th width="20">STT</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Phân quyền</th>
+                        <th>Trạng thái</th>
+                        <th class="center">Thêm</th>
+                    </tr>
+                </thead>
+                <tbody ng-if="RspList.length > 0">
+                    <tr ng-repeat="item in RspList">
+                        <td>{{item.index}}</td>
+                        <td>{{item.USERNAME}}</td>
+                        <td>{{item.FULLNAME}}</td>
+                        <td>{{item.EMAIL}}</td>
+                        <td>{{item.ROLE_NAME}}</td>
+                        <td>
+                            <span ng-if="item.ISAPPROVED === '1' && item.ISLOCKEDOUT === '1'" class="label label-sm label-danger">Tạm khóa</span>
+                            <span ng-if="item.ISAPPROVED === '1' && item.ISLOCKEDOUT === '0'" class="label label-sm label-success">Hoạt động</span>
+                        </td>
+                        <td class="center">
+                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                <a href="@Url.Action("EditUser")?userId={{item.USER_ID}}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Sửa"><i class="fa fa-edit"></i></a>
+                                <a ng-if="item.ISLOCKEDOUT === '0'" href="#block-popup" ng-click="SetUser(item.USER_ID,item.ISLOCKEDOUT)" data-toggle="modal" class="btn btn-xs btn-danger tooltips" data-placement="top" data-original-title="Khóa"><i class="fa fa-ban"></i></a>
+                                <a ng-if="item.ISLOCKEDOUT === '1'" href="#unblock-popup" ng-click="SetUser(item.USER_ID,item.ISLOCKEDOUT)" data-toggle="modal" class="btn btn-xs btn-success tooltips" data-placement="top" data-original-title="Mở khóa"><i class="fa fa-check-square-o"></i></a>
+                                <a href="@Url.Action("ResetPass")?userId={{item.USER_ID}}" class="btn btn-xs btn-dark-grey tooltips" data-placement="top" data-original-title="Làm mới mật khẩu"><i class="fa fa-mail-forward"></i></a>
+                            </div>
+                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#"> <i class="fa fa-cog"></i> <span class="caret"></span> </a>
+                                    <ul role="menu" class="dropdown-menu pull-right">
+                                        <li role="presentation"> <a role="menuitem" tabindex="-1" href="@Url.Action("EditUser")?userId={{item.USER_ID}}"> <i class="fa fa-edit"></i> Sửa </a> </li>
+                                        <li ng-if="item.ISLOCKEDOUT === '0'" href="#block-popup" role="presentation"> <a role="menuitem" tabindex="-1" href="#block-popup" data-toggle="modal"> <i class="fa fa-ban"></i> Khóa </a> </li>
+                                        <li ng-if="item.ISLOCKEDOUT === '1'" href="#unblock-popup" role="presentation"> <a role="menuitem" tabindex="-1" href="#unblock-popup" data-toggle="modal"> <i class="fa fa-ban"></i> Mở Khóa </a> </li>
+                                        <li role="presentation"> <a role="menuitem" tabindex="-1" href="@Url.Action("ResetPass")?userId={{item.USER_ID}}" data-toggle="modal"> <i class="fa fa-mail-forward"></i> Làm mới mật khẩu </a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="loading" style="text-align: center">
+                        <img src="~/Resources/admin/images/ajax-loader.gif" alt="loading..." />
+                    </div>
+                </div>
+                <div class="col-md-offset-6">
+                    <div class="pager">
+                        <div class="dataTables_paginate">
+                            <pagination num-pages="numPages" total-items="totalRow" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" class="pagination-sm" items-per-page="itemsPerPage" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                            <pre>Trang: {{currentPage}} / {{numPages}}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+
+    <!--Lock Modal-->
+    <div id="block-popup" class="modal fade" tabindex="-1" data-width="600" style="display: none;">
+        <div class="modal-header">
+            <h4 class="modal-title">Thông báo khóa</h4>
+        </div>
+        <div class="modal-body">
+            <p class="text-center">Bạn chắc chắn muốn khóa bản ghi này!</p>
+        </div>
+        <div class="modal-footer">
+            <input type="button" value="Hủy bỏ" class="btn btn-dark-grey" data-dismiss="modal">
+            <input type="submit" ng-click="UpdateStatus()" value="Đồng ý" class="btn btn-primary" data-dismiss="modal">
+        </div>
+    </div>
+    <!--UnLock Modal-->
+    <div id="unblock-popup" class="modal fade" tabindex="-1" data-width="600" style="display: none;">
+        <div class="modal-header">
+            <h4 class="modal-title">Thông báo mở khóa</h4>
+        </div>
+        <div class="modal-body">
+            <p class="text-center">Bạn chắc chắn muốn mở khóa bản ghi này!</p>
+        </div>
+        <div class="modal-footer">
+            <input type="button" value="Hủy bỏ" class="btn btn-dark-grey" data-dismiss="modal">
+            <input type="submit" ng-click="UpdateStatus()" value="Đồng ý" class="btn btn-primary" data-dismiss="modal">
+        </div>
+    </div>
+</div>
+<!--Edit Modal-->

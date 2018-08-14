@@ -1,0 +1,5 @@
+D:\Develop\Asp.NET\VNPAY_RECRUITMENT\MerchantCMS.Library\bin\Debug\MerchantCMS.Library.dll
+D:\Develop\Asp.NET\VNPAY_RECRUITMENT\MerchantCMS.Library\bin\Debug\MerchantCMS.Library.pdb
+D:\Develop\Asp.NET\VNPAY_RECRUITMENT\MerchantCMS.Library\obj\Debug\MerchantCMS.Library.csprojResolveAssemblyReference.cache
+D:\Develop\Asp.NET\VNPAY_RECRUITMENT\MerchantCMS.Library\obj\Debug\MerchantCMS.Library.dll
+D:\Develop\Asp.NET\VNPAY_RECRUITMENT\MerchantCMS.Library\obj\Debug\MerchantCMS.Library.pdb

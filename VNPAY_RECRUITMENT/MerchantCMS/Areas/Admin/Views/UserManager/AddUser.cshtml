@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.title = "Thêm mới người sử dụng";
+}
+<div class="container container-edit">
+    <div class="page-header">
+        <h1>@ViewBag.title</h1>
+    </div>
+    <div class="row">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="col-md-12">
+            @{
+                if (TempData["RspCode"] != null)
+                {
+                    if ((string) TempData["RspCode"] != "00")
+                    {
+                        <div class="alert alert-danger" role="alert">Lỗi trong quá trình thêm mới</div>
+                    }
+                }
+            }
+        </div>
+        <div class="col-md-8">
+            <form id="frmAdd" class="form-horizontal" role="form" action="@Url.Action("AddUser")" method="post">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Tên đăng nhập<span class="symbol required"/>: </label>
+                    <div class="col-sm-7">
+                        <input type="text" value="" class="form-control" id="Username" name="Username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Họ tên<span class="symbol required" />: </label>
+                    <div class="col-sm-7">
+                        <input type="text" value="" class="form-control" id="Fullname" name="Fullname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Email<span class="symbol required" />: </label>
+                    <div class="col-sm-7">
+                        <input type="email" value="" class="form-control" id="Email" name="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Mật khẩu<span class="symbol required" />: </label>
+                    <div class="col-sm-7">
+                        <input type="password" value="" class="form-control" id="Password" name="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Nhập lại mật khẩu<span class="symbol required" />: </label>
+                    <div class="col-sm-7">
+                        <input type="password" value="" class="form-control" id="RePass" name="RePass">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Phân quyền: </label>
+                    <div class="col-sm-7">
+                        @Html.DropDownList("RoleId", (IEnumerable<SelectListItem>)ViewData["roleList"], "Chọn quyền", new { @class = "form-control search-select", data_style = "btn-primary", aria_expanded = "false" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Trạng thái: </label>
+                    <div class="col-sm-7">
+                        <select class="form-control search-select" id="Islockedout" name="Islockedout">
+                            <option value="0">Hoạt động</option>
+                            <option value="1">Tạm khóa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="clearfix form-actions center">
+                    <button type="submit" class="btn btn-primary btn-sm">Thêm mới</button>
+                    <a onclick=" javascript:history.go(-1); " class="btn btn-dark-grey btn-sm">Hủy bỏ</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#frmAdd').validate({
+                rules: {
+                    Username: {
+                        required: true,
+                        maxlength: 20
+                    },
+                    Fullname: {
+                        required: true
+                    },
+                    Email: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 32
+                    },
+                    RePass: {
+                        required: true,
+                        equalTo: "#Password"
+                    }
+                },
+                messages: {
+                    Username: {
+                        required: "Bạn phải nhập tên tài khoản",
+                        maxlength: "Tên tài khoản không được vượt quá 20 ký tự"
+                    },
+                    Email: {
+                        required: "Bạn phải nhập email"
+                    },
+                    Fullname: {
+                        required: "Bạn phải nhập tên đầy đủ",
+                        maxlength: "Tên ngân hàng không được vượt quá 255 ký tự"
+                    },
+                    Password: {
+                        required: "Bạn phải nhập mật khẩu",
+                        minlength: "Mật khẩu phải có ít nhất 6 ký tự",
+                        maxlength: "Mật khẩu không được vượt quá 32 ký tự"
+                    },
+                    RePass: {
+                        required: "Bạn phải nhập lại password",
+                        equalTo: "Mật khẩu không trùng"
+                    }
+                }
+            });
+        });
+    </script>
+}

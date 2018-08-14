@@ -1,0 +1,97 @@
+﻿@using MvcPaging
+@using PagedList.Mvc;
+@using VNPRECRUITMENT.Models;
+@{
+    ViewBag.Title = "SuccessApply";
+}
+
+
+<div class="form-horizontal">
+    <div class="upload-header">
+        <div class="container">
+            <h1 style="color:green">
+                <span>
+                    @ViewBag.Message 
+                    Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất
+                </span>
+            </h1>
+        </div>
+    </div>
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">THÔNG TIN TUYỂN DỤNG NỔI BẬT</h1>
+        </div>
+
+    </div>
+    <div class="container" style="margin-top: 10px; margin-bottom: 60px; ">
+        <div class="col-md-12 header-list">
+            <div class="col-md-2">
+                <span>Tên công việc</span>
+            </div>
+            <div class="col-md-3">
+                <span>Phòng ban</span>
+            </div>
+            <div class="col-md-2">
+                <span>Khu vực</span>
+            </div>
+            <div class="col-md-1">
+                <span>Số lượng</span>
+            </div>
+            <div class="col-md-2">
+                <span>Mức lương</span>
+            </div>
+            <div class="col-md-2">
+                <span>Ngày hết hạn</span>
+            </div>
+
+        </div>
+
+
+        <div style="margin-top: 10px; margin-bottom: 60px;  border: 1px solid #ccc; border-radius: 4px; overflow: hidden; border-top-right-radius:0;border-top-left-radius:0;">
+            <div id="container" class="list-tv">
+                <div style="border-bottom: 1px #ccc solid;">
+                    @foreach (var item in ViewBag.SelectJob)
+                    {
+                        <div class="tv-item">
+                            <div class="content col-md-2">
+                                <a target="_blank" href="@Url.Action("Details"+"/"+@item.JOB_ID, "Jobs")"><h4>@item.JOB_NAME</h4></a>
+                                <span style="float: left; width:10%;">
+                                    <img src="~/Resources/img/hot.png" alt="" />
+                                </span>
+                            </div>
+                            <div class="thumb col-md-3">
+                                <span class="tv-salary tt" data-placement="left">@item.GROUP_NAME</span>
+                            </div>
+
+                            @{
+                        VNPAY_RECRUITMENTEntities Dbcontext = new VNPAY_RECRUITMENTEntities();
+                        var location_name = Dbcontext.PROC_LOCATION_NAME_SELECTALL(item.JOB_ID);
+                        List<string> rs = new List<string>();
+                        foreach (var item_location in location_name)
+                        {
+                            rs.Add(item_location);
+                        }
+                        <div class="thumb col-md-2">
+                            @string.Join(",", rs)
+                        </div>
+                            }
+                            @*<div class="thumb col-md-2">@item.LOCATION_NAME</div>*@
+                            <div class="thumb col-md-1">
+                                <span class="tv-salary tt" data-placement="left">@item.NUMBER</span>
+                            </div>
+                            <div class="thumb col-md-2">@String.Format("{0:0,0 vnđ}", @item.SALARY)</div>
+                            <div class="thumb col-md-2">@item.EXPIRED_DATE</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</div>

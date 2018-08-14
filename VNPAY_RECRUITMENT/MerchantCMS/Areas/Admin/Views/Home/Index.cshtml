@@ -1,0 +1,197 @@
+﻿@using VNPRECRUITMENT.Models;
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+
+@functions{
+    public string GenerateSlug(string Name)
+    {
+        string phrase = string.Format("{0}", Name);
+
+        string str = RemoveUnicode(phrase).ToLower();
+        // invalid chars
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"[^a-z0-9\s-]", "");
+        // convert multiple spaces into one space
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s+", " ").Trim();
+        // cut and trim
+        str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+        str = System.Text.RegularExpressions.Regex.Replace(str, @"\s", "-"); // hyphens
+        return str;
+    }
+
+    public static string RemoveUnicode(string text)
+    {
+        string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ",
+    "đ",
+    "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+    "í","ì","ỉ","ĩ","ị",
+    "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ",
+    "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự",
+    "ý","ỳ","ỷ","ỹ","ỵ",};
+        string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+    "d",
+    "e","e","e","e","e","e","e","e","e","e","e",
+    "i","i","i","i","i",
+    "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o",
+    "u","u","u","u","u","u","u","u","u","u","u",
+    "y","y","y","y","y",};
+        for (int i = 0; i < arr1.Length; i++)
+        {
+            text = text.Replace(arr1[i], arr2[i]);
+            text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+        }
+        return text;
+    }
+}
+
+
+<div class="page-header">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+<h4>Các CV mới nhất</h4>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <table class="table table-striped table-hover" id="sample-table-2">
+            <thead>
+                <tr>
+                    <th width="20" class="center">#</th>
+                    <th class="left">Tên ứng viên</th>
+                    <th class="center">Vị trí</th>
+                    <th class="center">Phòng ban</th>
+                    <th class="center">Giới tính</th>
+                    <th class="center">Điện thoại</th>
+                    <th class="center">Email</th>
+                    <th class="center">Ngày tạo</th>
+                    <th class="center">Trạng thái</th>
+                    @*<th class="center">Thêm</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.ListCVnew)
+                {
+                    <tr>
+                        <td>@item.ROWNUMBER</td>
+                        <td class="left"><a href="@Url.Action("Edit","Candidates")?id=@item.CV_ID"> @item.CANDIDATE_NAME</a></td>
+                        <td>@item.JOB_NAME</td>
+                        <td>@item.GROUP_NAME</td>
+                        @if (@item.SEX == 1)
+                        {
+                            <td><span class="label label-default">Nam</span></td>
+                        }
+                        else if (@item.SEX == 0)
+                        {
+                            <td><span class="label label-green">Nữ</span></td>
+                        }
+                        <td>@item.PHONENUMBER</td>
+                        <td>@item.EMAIL</td>
+                        <td>@item.CREATED_DATE</td>
+                        @if (@item.CV_STATUS == 1)
+                        {
+                            <td><span class="label label-warning">Chưa xem</span></td>
+                        }
+                        else if (@item.CV_STATUS == 2)
+                        {
+                            <td><span class="label label-info">Chờ phỏng vấn</span></td>
+                        }
+                        else if (@item.CV_STATUS == 3)
+                        {
+                            <td><span class="label label-success">Đã duyệt</span></td>
+                        }
+                        else if (@item.CV_STATUS == 4)
+                        {
+                            <td><span class="label label-danger">Loại</span></td>
+                        }
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.col -->
+</div>
+
+<h4>Các công việc sắp hết hạn</h4>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <table class="table table-striped table-hover" id="sample-table-2">
+            <thead>
+                <tr class="center">
+                    <th width="20" class="center">#</th>
+                    <th class="center">Tiêu đề công việc</th>
+                    <th class="center">Phòng ban</th>
+                    <th class="center">Khu vực</th>
+                    <th class="center">Số Lượng</th>
+                    <th class="center">Số CV chưa đọc</th>
+                    <th class="center">Ngày tạo</th>
+                    <th class="center">Ngày hết hạn</th>
+                    <th class="center">Trạng thái</th>
+                    <th class="center">Thêm</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in ViewBag.ListJobNew)
+                {
+                    if (@item.JOB_ID != null)
+                    {
+                        <tr>
+                            <td class="left">@item.ROWNUMBER</td>
+                            <td class="left">@item.JOB_NAME</td>
+                            <td class="left"> @item.GROUP_NAME</td>
+                            @{
+                        VNPAY_RECRUITMENTEntities Dbcontext = new VNPAY_RECRUITMENTEntities();
+                        var location_name = Dbcontext.PROC_LOCATION_NAME_SELECTALL(item.JOB_ID);
+                        List<string> rs = new List<string>();
+                        foreach (var item_location in location_name)
+                        {
+                            rs.Add(item_location);
+                        }
+                        <td>@string.Join(",", rs) </td>
+                            }
+                            <td class="center"><span class="right">@item.NUMBER</span></td>
+                            <td class="center"><a href="@Url.Action("Index","Candidates")?Job_Id=@item.JOB_ID&status=1"> @item.CV_UNREAD / @item.CV_APPLY_COUNT</a></td>
+
+                            <td>@item.CREATED_DATE</td>
+
+                            @*@if (DateTime.ParseExact(item.EXPIRED_DATE, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture) <= DateTime.Now)
+                                {
+                                    <td><span style="color:red;">@item.EXPIRED_DATE</span></td>
+                                }
+                                else
+                                {*@
+                            <td>@item.EXPIRED_DATE</td>
+
+
+                            @if (@item.JOB_STATUS == 1)
+                            {
+                                <td><span class="label label-success">Xuất bản</span></td>
+                            }
+                            else if (@item.JOB_STATUS == 2)
+                            {
+                                <td><span class="label label-danger">Lưu nháp</span></td>
+                            }
+
+
+                            <td class="left">
+                                <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                    <a href="@Url.Action("Edit","Jobs")?id=@item.JOB_ID" class="btn btn-xs btn-success tooltips" data-placement="top" data-tooltip="Sửa" data-original-title="Sửa"><i class="fa fa-edit"></i></a>
+                                    <a href="@Url.Action("Delete", "Jobs")?id=@item.JOB_ID" class="btn btn-xs btn-danger tooltips" data-tooltip="Xóa" data-placement="top" data-original-title="Xóa"><i class="fa fa-trash"></i></a>
+                                    <a target="_blank" href="~/cong-viec/@GenerateSlug(item.JOB_NAME)/@item.JOB_ID" class="btn btn-xs btn-teal tooltips" data-tooltip="Chi tiết" data-placement="top" data-original-title="Chi tiết"><i class="fa fa-mail-forward"></i></a>
+                                    <a href="@Url.Action("RefreshJob", "Jobs")?id=@item.JOB_ID" class="btn btn-xs btn-success tooltips" data-tooltip="Làm mới" data-placement="top" data-original-title=""><i class="fa fa-cog"></i></a>
+                                </div>
+                               
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!-- /.col -->
+</div>
